@@ -9,20 +9,13 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#09090b;--c1:#18181b;--c2:#1e1e23;--c3:#27272a;
-  --b:rgba(255,255,255,.06);--b2:rgba(255,255,255,.1);
-  --t:#fafafa;--t2:#a1a1aa;--t3:#52525b;
-  --ac:#6366f1;--ac2:#818cf8;--ac3:#a5b4fc;
-  --g:#22c55e;--y:#eab308;--r:#ef4444;--bl:#3b82f6;
-  --rad:10px;
-}
-html,body{height:100%;background:var(--bg);color:var(--t);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-body{padding-bottom:56px;overflow-x:hidden}
+:root{--bg:#09090b;--c1:#18181b;--c2:#1e1e23;--c3:#27272a;--b:rgba(255,255,255,.06);--b2:rgba(255,255,255,.1);--t:#fafafa;--t2:#a1a1aa;--t3:#52525b;--ac:#6366f1;--ac2:#818cf8;--g:#22c55e;--y:#eab308;--r:#ef4444;--bl:#3b82f6;--rad:10px}
+html,body{height:100%;background:var(--bg);color:var(--t);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{padding-bottom:60px;overflow-x:hidden}
 
-.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--b)}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--b)}
 .top h1{font-size:17px;font-weight:700;flex:1}
-.pill{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px}
+.pill{font-size:9px;font-weight:600;padding:3px 9px;border-radius:20px}
 .pill-off{background:var(--c1);color:var(--t3)}
 .pill-on{background:rgba(34,197,94,.1);color:var(--g)}
 
@@ -31,38 +24,21 @@ body{padding-bottom:56px;overflow-x:hidden}
 .nav button svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button.on{color:var(--ac2)}
 
-.pg{display:none;padding:12px 14px}
+.pg{display:none;padding:10px 14px}
 .pg.on{display:block;animation:fi .12s ease}
 @keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
+/* cards, inputs, buttons */
 .card{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;margin-bottom:8px;transition:border-color .12s}
 .card:hover{border-color:var(--b2)}
-
 .sec{font-size:12px;font-weight:500;color:var(--t2);margin-bottom:6px}
-
-.g{display:grid;gap:6px}
-.g3{grid-template-columns:repeat(3,1fr)}
-
-.stat{text-align:center;padding:10px 6px}
-.stat .v{font-size:20px;font-weight:700;color:var(--t)}
-.stat .l{font-size:9px;color:var(--t3);margin-top:1px}
-
-.conn{display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px}
-.conn .ic{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
-.conn .inf{flex:1;min-width:0}
-.conn .nm{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.conn .ur{font-size:10px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
-.conn .mt{font-size:9px;color:var(--t3);margin-top:2px}
-
 .field{margin-bottom:10px}
 .field label{display:block;font-size:12px;font-weight:500;color:var(--t2);margin-bottom:4px}
 .field input,.field textarea,.field select{width:100%;padding:9px 11px;border:1px solid var(--b);border-radius:8px;background:var(--c2);color:var(--t);font-size:13px;font-family:inherit;outline:none;transition:border-color .12s}
 .field input:focus,.field textarea:focus{border-color:var(--ac)}
-.field textarea{resize:vertical;min-height:56px}
+.field textarea{resize:vertical;min-height:50px}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
-.row{display:flex;gap:6px}
-.row>.field{flex:1}
-
+.row{display:flex;gap:6px}.row>.field{flex:1}
 .btn{padding:10px 14px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .1s;width:100%}
 .btn:active{transform:scale(.98)}
 .btn-p{background:var(--ac);color:#fff}
@@ -71,46 +47,85 @@ body{padding-bottom:56px;overflow-x:hidden}
 .btn-d{background:rgba(239,68,68,.08);color:var(--r);border:1px solid rgba(239,68,68,.15)}
 .btn-s{padding:6px 10px;font-size:11px}
 
-.mtd{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700;font-family:'SF Mono','Menlo',monospace;letter-spacing:.3px}
-.mtd.GET{background:rgba(34,197,94,.1);color:var(--g)}
-.mtd.POST{background:rgba(99,102,241,.1);color:var(--ac2)}
-.mtd.PUT{background:rgba(234,179,8,.1);color:var(--y)}
-.mtd.DELETE{background:rgba(239,68,68,.1);color:var(--r)}
-.mtd.PATCH{background:rgba(168,85,247,.1);color:#a855f7}
+/* search bar */
+.search{position:relative;margin-bottom:10px}
+.search input{width:100%;padding:10px 10px 10px 36px;border:1px solid var(--b);border-radius:var(--rad);background:var(--c1);color:var(--t);font-size:13px;outline:none}
+.search input:focus{border-color:var(--ac)}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--t3);fill:none;stroke-width:2}
 
+/* chips */
+.chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;padding-bottom:4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap;cursor:pointer;border:1px solid var(--b);background:var(--c1);color:var(--t2);transition:all .12s;flex-shrink:0}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+
+/* catalog card grid */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ccard{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;cursor:pointer;transition:border-color .12s}
+.ccard:active{border-color:var(--ac)}
+.ccard .ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-bottom:8px}
+.ccard .nm{font-size:12px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccard .ds{font-size:10px;color:var(--t3);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ccard .ct{font-size:9px;color:var(--t3);margin-top:4px}
+
+/* connected API card */
+.api-card{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);margin-bottom:8px;overflow:hidden}
+.api-head{display:flex;align-items:center;gap:10px;padding:12px;cursor:pointer}
+.api-head .ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.api-head .inf{flex:1;min-width:0}
+.api-head .nm{font-size:13px;font-weight:600}
+.api-head .mt{font-size:10px;color:var(--t3)}
+.api-head .arr{color:var(--t3);transition:transform .15s;font-size:14px}
+.api-head .arr.open{transform:rotate(90deg)}
+.api-caps{border-top:1px solid var(--b);display:none}
+.api-caps.open{display:block}
+
+/* capability row */
+.cap{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--b);cursor:pointer;transition:background .1s}
+.cap:last-child{border:none}
+.cap:active{background:var(--c2)}
+.cap .mtd{display:inline-block;padding:2px 5px;border-radius:3px;font-size:8px;font-weight:700;font-family:'SF Mono',monospace;letter-spacing:.3px;flex-shrink:0}
+.cap .mtd.GET{background:rgba(34,197,94,.1);color:var(--g)}
+.cap .mtd.POST{background:rgba(99,102,241,.1);color:var(--ac2)}
+.cap .mtd.PUT{background:rgba(234,179,8,.1);color:var(--y)}
+.cap .mtd.DELETE{background:rgba(239,68,68,.1);color:var(--r)}
+.cap .mtd.PATCH{background:rgba(168,85,247,.1);color:#a855f7}
+.cap .cn{flex:1;min-width:0}
+.cap .cn .cl{font-size:12px;font-weight:500}
+.cap .cn .cd{font-size:10px;color:var(--t3)}
+.cap .go{color:var(--t3);font-size:14px}
+
+/* status badges */
 .sts{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;font-family:'SF Mono',monospace}
 .sts.s2{background:rgba(34,197,94,.1);color:var(--g)}
 .sts.s3{background:rgba(59,130,246,.1);color:var(--bl)}
 .sts.s4{background:rgba(234,179,8,.1);color:var(--y)}
 .sts.s5,.sts.s0{background:rgba(239,68,68,.1);color:var(--r)}
 
-.code{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:10px;font:11px/1.6 'SF Mono','Menlo','Courier New',monospace;color:var(--t2);max-height:50vh;overflow:auto;white-space:pre-wrap;word-break:break-word;tab-size:2}
-.code .k{color:var(--ac3)}.code .s{color:var(--g)}.code .n{color:var(--y)}.code .b{color:var(--r)}.code .nl{color:var(--t3)}
+/* code viewer */
+.code{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:10px;font:11px/1.6 'SF Mono','Menlo',monospace;color:var(--t2);max-height:45vh;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.code .k{color:#a5b4fc}.code .s{color:#22c55e}.code .n{color:#eab308}.code .b{color:#ef4444}.code .nl{color:#52525b}
 
-.hi{display:flex;align-items:center;gap:7px;padding:8px 0;border-bottom:1px solid var(--b);cursor:pointer}
+/* history item */
+.hi{display:flex;align-items:center;gap:7px;padding:8px 12px;border-bottom:1px solid var(--b);cursor:pointer}
 .hi:last-child{border:none}
 .hi:active{opacity:.5}
 .hi .ep{flex:1;font-size:11px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'SF Mono',monospace}
 .hi .ms{font-size:10px;color:var(--t3);font-family:'SF Mono',monospace}
+.hi .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
+/* overlays and sheets */
 .ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}
 .ov.on{display:flex;animation:fi .12s}
-.sh{background:var(--c1);border-radius:14px 14px 0 0;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;padding:16px 14px 28px}
+.sh{background:var(--c1);border-radius:14px 14px 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:16px 14px 28px}
 .sh-bar{width:28px;height:3px;border-radius:2px;background:var(--c3);margin:0 auto 14px}
-
-.emp{text-align:center;padding:20px 14px;color:var(--t3);font-size:12px}
-.emp svg{width:32px;height:32px;stroke:var(--c3);margin-bottom:8px}
 
 .info-row{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--b)}
 .info-row:last-child{border:none}
 .info-row .ik{flex:1;font-size:12px;font-weight:500;color:var(--t2)}
-.info-row .iv{font-size:11px;color:var(--t3)}
+.info-row .iv{font-size:11px;color:var(--t3);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-.quick-start{padding:14px;background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);margin-bottom:8px}
-.quick-start h3{font-size:13px;font-weight:600;margin-bottom:6px}
-.quick-start .step{display:flex;gap:8px;padding:6px 0;font-size:11px;color:var(--t2);align-items:flex-start}
-.quick-start .num{width:18px;height:18px;border-radius:50%;background:var(--ac);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-
+.emp{text-align:center;padding:20px 14px;color:var(--t3);font-size:12px}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
 </style>
 </head>
@@ -118,70 +133,32 @@ body{padding-bottom:56px;overflow-x:hidden}
 
 <div class="top"><h1>API Hub</h1><span class="pill pill-off" id="hSt">offline</span></div>
 
-<!-- HOME -->
-<div class="pg on" id="pg-home">
-  <div class="g g3" style="margin-bottom:8px">
-    <div class="card stat"><div class="v" id="sC">0</div><div class="l">APIs</div></div>
-    <div class="card stat"><div class="v" id="sR">0</div><div class="l">Requests</div></div>
-    <div class="card stat"><div class="v" id="sU">--</div><div class="l">Uptime</div></div>
-  </div>
-  <div class="sec">Your APIs</div>
-  <div id="cList"></div>
-  <div id="cEmpty">
-    <div class="quick-start">
-      <h3>Get started</h3>
-      <div class="step"><span class="num">1</span><span>Tap <strong>+</strong> below to add an API</span></div>
-      <div class="step"><span class="num">2</span><span>Enter a name, base URL, and auth</span></div>
-      <div class="step"><span class="num">3</span><span>Go to <strong>Request</strong> to start making calls</span></div>
-    </div>
-    <button class="btn btn-p" onclick="openSheet()">Add your first API</button>
-  </div>
+<!-- ═══ EXPLORE ═══ -->
+<div class="pg on" id="pg-explore">
+  <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="sBar" placeholder="Search APIs..." oninput="filterCatalog()"></div>
+  <div class="chips" id="catChips"></div>
+  <div class="cgrid" id="catGrid"></div>
+  <div style="margin-top:10px"><button class="btn btn-g" onclick="openCustom()">Add custom API</button></div>
 </div>
 
-<!-- REQUEST -->
-<div class="pg" id="pg-req">
-  <div class="sec">Request builder</div>
-  <div class="field"><label>API</label><select id="rC"></select></div>
-  <div class="row">
-    <div class="field" style="flex:0 0 86px"><label>Method</label><select id="rM"><option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option></select></div>
-    <div class="field"><label>Endpoint</label><input id="rE" placeholder="/users"></div>
-  </div>
-  <div class="field"><label>Query params (key=val per line)</label><textarea id="rQ" rows="2" placeholder="page=1&#10;limit=10"></textarea></div>
-  <div class="field"><label>Body (JSON)</label><textarea id="rB" rows="3" placeholder='{"key": "value"}'></textarea></div>
-  <div class="field"><label>Extra headers (key: val per line)</label><textarea id="rH" rows="2" placeholder="X-Custom: value"></textarea></div>
-  <div style="display:flex;gap:6px">
-    <button class="btn btn-g btn-s" onclick="saveReq()" style="width:auto">Save</button>
-    <button class="btn btn-p" id="sendBtn" onclick="sendReq()">Send request</button>
-  </div>
-  <div id="resW" style="display:none;margin-top:12px">
-    <div class="card" style="display:flex;align-items:center;gap:7px;padding:8px 10px;margin-bottom:6px">
-      <span class="mtd" id="resMtd">GET</span>
-      <span class="sts" id="resSts">200</span>
-      <span style="flex:1;font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="resUr"></span>
-      <span style="font-size:10px;color:var(--t3);font-family:'SF Mono',monospace" id="resMs">0ms</span>
-    </div>
-    <div class="code" id="resBody"></div>
-  </div>
+<!-- ═══ MY APIS ═══ -->
+<div class="pg" id="pg-my">
+  <div id="myList"></div>
+  <div class="emp" id="myE">No APIs connected. Go to Explore to add one.</div>
 </div>
 
-<!-- HISTORY -->
-<div class="pg" id="pg-hist">
+<!-- ═══ ACTIVITY ═══ -->
+<div class="pg" id="pg-act">
   <div style="display:flex;align-items:center;margin-bottom:8px">
-    <span class="sec" style="flex:1;margin:0">History</span>
+    <span class="sec" style="flex:1;margin:0">Activity</span>
     <button class="btn btn-g btn-s" style="width:auto" onclick="clearHist()">Clear</button>
   </div>
-  <div class="card" style="padding:0"><div id="hList" style="padding:0 10px"></div></div>
-  <div class="emp" id="hE"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div>No requests yet</div></div>
+  <div class="chips" id="actChips"></div>
+  <div class="card" style="padding:0"><div id="actList"></div></div>
+  <div class="emp" id="actE">No activity yet.</div>
 </div>
 
-<!-- SAVED -->
-<div class="pg" id="pg-saved">
-  <div class="sec">Saved requests</div>
-  <div id="svList"></div>
-  <div class="emp" id="svE"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg><div>No saved requests yet</div></div>
-</div>
-
-<!-- SETTINGS -->
+<!-- ═══ SETTINGS ═══ -->
 <div class="pg" id="pg-set">
   <div class="sec">Connection</div>
   <div class="card" style="padding:0">
@@ -189,9 +166,9 @@ body{padding-bottom:56px;overflow-x:hidden}
     <div class="info-row"><span class="ik">Host</span><span class="iv" id="si_host">--</span></div>
     <div class="info-row"><span class="ik">Memory</span><span class="iv" id="si_mem">--</span></div>
     <div class="info-row"><span class="ik">Uptime</span><span class="iv" id="si_up">--</span></div>
-    <div class="info-row"><span class="ik">Local IP</span><span class="iv" id="si_ip">--</span></div>
-    <div class="info-row"><span class="ik">Clients</span><span class="iv" id="si_cl">--</span></div>
   </div>
+  <div class="sec" style="margin-top:12px">API Keys</div>
+  <div id="keyList"></div>
   <div class="sec" style="margin-top:12px">Data</div>
   <div class="card" style="padding:0">
     <div class="info-row"><span class="ik">Total APIs</span><span class="iv" id="si_apis">0</span></div>
@@ -200,32 +177,45 @@ body{padding-bottom:56px;overflow-x:hidden}
   </div>
 </div>
 
-<!-- ADD SHEET -->
-<div class="ov" id="addSh" onclick="if(event.target===this)closeSheet()">
+<!-- ADD FROM CATALOG SHEET -->
+<div class="ov" id="catSh" onclick="if(event.target===this)closeCatSh()">
   <div class="sh">
     <div class="sh-bar"></div>
-    <div style="font-size:15px;font-weight:700;margin-bottom:12px">Add API</div>
-    <div class="field"><label>Name</label><input id="aN" placeholder="My API"></div>
-    <div class="field"><label>Base URL</label><input id="aU" placeholder="https://api.example.com"></div>
-    <div class="row"><div class="field"><label>Auth type</label><select id="aA"><option value="none">None</option><option value="bearer">Bearer token</option><option value="apikey">API key</option><option value="basic">Basic auth</option></select></div></div>
-    <div class="field" id="aVW" style="display:none"><label>Auth value</label><input id="aV" placeholder="token or user:pass"></div>
-    <div class="field"><label>Description</label><input id="aD" placeholder="Optional"></div>
-    <button class="btn btn-p" onclick="addConn()">Add connection</button>
+    <div id="catShContent"></div>
   </div>
 </div>
 
-<!-- DETAIL SHEET -->
-<div class="ov" id="detSh" onclick="if(event.target===this)closeDet()">
+<!-- CUSTOM API SHEET -->
+<div class="ov" id="custSh" onclick="if(event.target===this)closeCustom()">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:12px">Add custom API</div>
+    <div class="field"><label>Name</label><input id="cN" placeholder="My API"></div>
+    <div class="field"><label>Base URL</label><input id="cU" placeholder="https://api.example.com"></div>
+    <div class="row"><div class="field"><label>Auth type</label><select id="cA"><option value="none">None</option><option value="bearer">Bearer token</option><option value="apikey">API key</option><option value="basic">Basic auth</option></select></div></div>
+    <div class="field" id="cVW" style="display:none"><label>Auth value</label><input id="cV" placeholder="your-token-here"></div>
+    <button class="btn btn-p" onclick="addCustom()">Add connection</button>
+  </div>
+</div>
+
+<!-- CAPABILITY ACTION SHEET -->
+<div class="ov" id="capSh" onclick="if(event.target===this)closeCapSh()">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div id="capShContent"></div>
+  </div>
+</div>
+
+<!-- HISTORY DETAIL SHEET -->
+<div class="ov" id="detSh" onclick="if(event.target===this)closeDetSh()">
   <div class="sh"><div class="sh-bar"></div><div id="detC"></div></div>
 </div>
 
 <!-- NAV -->
 <div class="nav">
-  <button class="on" data-p="home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</button>
-  <button data-p="req"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Request</button>
-  <button onclick="openSheet()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add</button>
-  <button data-p="hist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>History</button>
-  <button data-p="saved"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Saved</button>
+  <button class="on" data-p="explore"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Explore</button>
+  <button data-p="my"><svg viewBox="0 0 24 24"><path d="M20 7h-4l-2-3H6L4 7H2a1 1 0 00-1 1v11a1 1 0 001 1h18a1 1 0 001-1V8a1 1 0 00-1-1z"/></svg>My APIs</button>
+  <button data-p="act"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Activity</button>
   <button data-p="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</button>
 </div>
 
@@ -233,97 +223,226 @@ body{padding-bottom:56px;overflow-x:hidden}
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const socket=io();
-let conns=[],hist=[],svd=[];
+let catalog=[],conns=[],hist=[],activeCat='All',activeHistFilter='all';
 
 socket.on('connect',()=>{$('#hSt').textContent='live';$('#hSt').className='pill pill-on';load()});
 socket.on('disconnect',()=>{$('#hSt').textContent='offline';$('#hSt').className='pill pill-off'});
-socket.on('connection:added',()=>lC());
-socket.on('request:complete',()=>lH());
+socket.on('connection:added',()=>lConns());
+socket.on('request:complete',()=>lHist());
 
-async function load(){await Promise.all([lC(),lH(),lS(),lSt()])}
-async function lC(){conns=await fetch('/api/connections').then(r=>r.json());rC();rCS()}
-async function lH(){hist=await fetch('/api/history?limit=60').then(r=>r.json());rH()}
-async function lS(){svd=await fetch('/api/saved').then(r=>r.json());rSv()}
-async function lSt(){
+async function load(){await Promise.all([lCatalog(),lConns(),lHist(),lStatus()])}
+async function lCatalog(){catalog=await fetch('/api/catalog').then(r=>r.json());renderCatalog()}
+async function lConns(){conns=await fetch('/api/connections').then(r=>r.json());renderMy();renderKeys()}
+async function lHist(){hist=await fetch('/api/history?limit=100').then(r=>r.json());renderAct()}
+async function lStatus(){
   const s=await fetch('/api/status').then(r=>r.json());
-  $('#sC').textContent=s.connectionCount;$('#sR').textContent=s.totalRequests;$('#sU').textContent=s.uptime||'--';
-  $('#si_st').textContent=socket.connected?'Connected':'Disconnected';
+  $('#si_st').textContent=socket.connected?'Connected':'Offline';
   $('#si_host').textContent=s.hostname||'--';$('#si_mem').textContent=(s.memPct||0)+'%';
-  $('#si_up').textContent=s.uptime||'--';$('#si_ip').textContent=(s.localIP||'--')+':4800';
-  $('#si_cl').textContent=s.clients||0;$('#si_apis').textContent=s.connectionCount;$('#si_reqs').textContent=s.totalRequests;
+  $('#si_up').textContent=s.uptime||'--';$('#si_apis').textContent=s.connectionCount;$('#si_reqs').textContent=s.totalRequests;
 }
 
-const CL=['#6366f1','#3b82f6','#22c55e','#eab308','#ef4444','#ec4899','#8b5cf6','#14b8a6','#f97316','#06b6d4'];
-
-function rC(){
-  const c=$('#cList');
-  if(!conns.length){c.innerHTML='';$('#cEmpty').style.display='block';return}
-  $('#cEmpty').style.display='none';
-  c.innerHTML=conns.map((cn,i)=>`<div class="card conn" onclick="selC('${cn.id}')">
-    <div class="ic" style="background:${CL[i%CL.length]}15;color:${CL[i%CL.length]}">${cn.name[0].toUpperCase()}</div>
-    <div class="inf"><div class="nm">${esc(cn.name)}</div><div class="ur">${esc(cn.baseUrl)}</div>
-    <div class="mt">${cn.requestCount||0} requests${cn.lastUsed?' · '+ta(cn.lastUsed):''}</div></div>
-    <span style="color:var(--t3);font-size:16px">›</span>
-  </div>`).join('');
+// ── CATALOG / EXPLORE ────────────────────────────────────────────────
+function renderCatalog(){
+  const cats=['All',...new Set(catalog.map(c=>c.category))];
+  $('#catChips').innerHTML=cats.map(c=>`<div class="chip${c===activeCat?' on':''}" onclick="setCat('${c}')">${c}</div>`).join('');
+  filterCatalog();
 }
-function rCS(){$('#rC').innerHTML=conns.length?conns.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join(''):'<option value="">Add an API first</option>'}
+function setCat(c){activeCat=c;$$('.chip').forEach(el=>{el.classList.toggle('on',el.textContent===c)});filterCatalog()}
+function filterCatalog(){
+  const q=$('#sBar').value.toLowerCase();
+  const connIds=new Set(conns.map(c=>c.catalogId));
+  let list=catalog;
+  if(activeCat!=='All')list=list.filter(c=>c.category===activeCat);
+  if(q)list=list.filter(c=>c.name.toLowerCase().includes(q)||c.description.toLowerCase().includes(q)||c.category.toLowerCase().includes(q));
+  $('#catGrid').innerHTML=list.map(c=>{
+    const added=connIds.has(c.id);
+    return`<div class="ccard" onclick="openCatSh('${c.id}')" style="${added?'border-color:rgba(34,197,94,.25)':''}">
+      <div class="ic" style="background:${c.color}18;color:${c.color}">${c.icon||c.name[0]}</div>
+      <div class="nm">${esc(c.name)}</div>
+      <div class="ds">${esc(c.description)}</div>
+      <div class="ct">${c.category}${added?' · connected':''} · ${(c.capabilities||[]).length} actions</div>
+    </div>`;
+  }).join('');
+}
 
-function rH(){
-  const c=$('#hList');
-  if(!hist.length){c.innerHTML='';$('#hE').style.display='block';return}
-  $('#hE').style.display='none';
-  c.innerHTML=hist.map(h=>`<div class="hi" onclick="det('${h.id}')">
-    <span class="mtd ${h.method}">${h.method}</span>
+function openCatSh(id){
+  const c=catalog.find(x=>x.id===id);if(!c)return;
+  const connected=conns.find(x=>x.catalogId===id);
+  const caps=(c.capabilities||[]);
+  $('#catShContent').innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+      <div class="ic" style="background:${c.color}18;color:${c.color};width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">${c.icon||c.name[0]}</div>
+      <div><div style="font-size:16px;font-weight:700">${esc(c.name)}</div><div style="font-size:11px;color:var(--t3)">${c.category}</div></div>
+    </div>
+    <div style="font-size:12px;color:var(--t2);margin-bottom:12px;line-height:1.4">${esc(c.description)}</div>
+    ${c.keyUrl?`<div style="font-size:11px;color:var(--t3);margin-bottom:10px">Get your key: <a href="${c.keyUrl}" target="_blank" style="color:var(--ac2)">${c.keyUrl.replace('https://','').split('/')[0]}</a></div>`:''}
+    <div class="sec">Capabilities (${caps.length})</div>
+    ${caps.map(cp=>`<div style="display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid var(--b)">
+      <span class="cap-mtd mtd ${cp.method}">${cp.method}</span>
+      <span style="font-size:12px;font-weight:500;flex:1">${esc(cp.name)}</span>
+    </div>`).join('')}
+    ${connected?`<div style="margin-top:12px;font-size:11px;color:var(--g)">Already connected</div><button class="btn btn-g" style="margin-top:8px" onclick="nav('my');closeCatSh()">Go to My APIs</button>`
+    :`<div class="field" style="margin-top:14px">${c.authType!=='none'?`<label>API key${c.authType==='bearer'?' / token':''}</label><input id="catKey" placeholder="Paste your key here">`:''}</div>
+    <button class="btn btn-p" onclick="addFromCatalog('${c.id}')">Connect ${esc(c.name)}</button>`}
+  `;
+  $('#catSh').classList.add('on');
+}
+function closeCatSh(){$('#catSh').classList.remove('on')}
+
+async function addFromCatalog(catalogId){
+  const keyEl=$('#catKey');
+  const authValue=keyEl?keyEl.value.trim():'';
+  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({catalogId,authValue})});
+  closeCatSh();await lConns();renderCatalog();nav('my');
+}
+
+function openCustom(){$('#custSh').classList.add('on')}
+function closeCustom(){$('#custSh').classList.remove('on')}
+$('#cA').addEventListener('change',()=>{$('#cVW').style.display=$('#cA').value==='none'?'none':'block'});
+async function addCustom(){
+  const n=$('#cN').value.trim(),u=$('#cU').value.trim();if(!n||!u)return;
+  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,baseUrl:u,authType:$('#cA').value,authValue:$('#cV').value})});
+  $('#cN').value='';$('#cU').value='';$('#cV').value='';closeCustom();await lConns();nav('my');
+}
+
+// ── MY APIS ──────────────────────────────────────────────────────────
+function renderMy(){
+  const c=$('#myList');
+  if(!conns.length){c.innerHTML='';$('#myE').style.display='block';return}
+  $('#myE').style.display='none';
+  c.innerHTML=conns.map(cn=>{
+    const caps=cn.capabilities||[];
+    return`<div class="api-card" id="api-${cn.id}">
+      <div class="api-head" onclick="toggleApi('${cn.id}')">
+        <div class="ic" style="background:${cn.color||'#6366f1'}18;color:${cn.color||'#6366f1'}">${cn.icon||cn.name[0]}</div>
+        <div class="inf">
+          <div class="nm">${esc(cn.name)}</div>
+          <div class="mt">${cn.requestCount||0} requests · ${caps.length} actions${cn.lastUsed?' · '+ta(cn.lastUsed):''}</div>
+        </div>
+        <span class="arr" id="arr-${cn.id}">›</span>
+      </div>
+      <div class="api-caps" id="caps-${cn.id}">
+        ${caps.length?caps.map(cp=>`<div class="cap" onclick="openCap('${cn.id}','${cp.id}')">
+          <span class="mtd ${cp.method}">${cp.method}</span>
+          <div class="cn"><div class="cl">${esc(cp.name)}</div><div class="cd">${esc(cp.description||'')}</div></div>
+          <span class="go">›</span>
+        </div>`).join(''):`<div style="padding:12px;font-size:11px;color:var(--t3)">No pre-built actions. This is a custom API.</div>`}
+        <div style="padding:8px 12px;border-top:1px solid var(--b);display:flex;gap:6px">
+          <button class="btn btn-d btn-s" style="width:auto" onclick="delConn('${cn.id}')">Remove</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleApi(id){
+  const caps=$('#caps-'+id),arr=$('#arr-'+id);
+  const open=caps.classList.toggle('open');
+  arr.classList.toggle('open',open);
+}
+
+function openCap(connId,capId){
+  const cn=conns.find(c=>c.id===connId);if(!cn)return;
+  const cp=(cn.capabilities||[]).find(c=>c.id===capId);if(!cp)return;
+  const params=cp.params||[];
+  $('#capShContent').innerHTML=`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div class="ic" style="background:${cn.color||'#6366f1'}18;color:${cn.color||'#6366f1'};width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">${cn.icon||cn.name[0]}</div>
+      <div><div style="font-size:14px;font-weight:700">${esc(cp.name)}</div><div style="font-size:11px;color:var(--t3)">${cn.name} · <span class="mtd ${cp.method}">${cp.method}</span> ${esc(cp.endpoint)}</div></div>
+    </div>
+    ${cp.description?`<div style="font-size:12px;color:var(--t2);margin-bottom:12px">${esc(cp.description)}</div>`:''}
+    <form id="capForm" onsubmit="return runCap(event,'${connId}','${capId}')">
+      ${params.map(p=>`<div class="field">
+        <label>${esc(p.label)}${p.required?' *':''}</label>
+        ${p.type==='select'
+          ?`<select name="${p.key}">${(p.options||[]).map(o=>`<option${o===p.default?' selected':''}>${o}</option>`).join('')}</select>`
+          :p.type==='textarea'
+          ?`<textarea name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}></textarea>`
+          :`<input name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}>`}
+      </div>`).join('')}
+      <button type="submit" class="btn btn-p" id="capRunBtn">Run</button>
+    </form>
+    <div id="capResult" style="margin-top:10px"></div>
+  `;
+  $('#capSh').classList.add('on');
+}
+function closeCapSh(){$('#capSh').classList.remove('on')}
+
+async function runCap(e,connId,capId){
+  e.preventDefault();
+  const cn=conns.find(c=>c.id===connId);if(!cn)return false;
+  const cp=(cn.capabilities||[]).find(c=>c.id===capId);if(!cp)return false;
+  const form=new FormData(e.target);
+  const vals=Object.fromEntries(form.entries());
+  const btn=$('#capRunBtn');btn.disabled=true;btn.textContent='Running...';
+
+  let endpoint=cp.endpoint;
+  const pathParams={};
+  const queryParams={};
+
+  for(const[k,v]of Object.entries(vals)){
+    if(endpoint.includes(`{{${k}}}`)){pathParams[k]=v}
+    else if(cp.method==='GET'){queryParams[k]=v}
+  }
+
+  let body=null;
+  if(cp.bodyTemplate&&cp.method!=='GET'){
+    body=JSON.parse(JSON.stringify(cp.bodyTemplate));
+    function fill(obj){
+      for(const k in obj){
+        if(typeof obj[k]==='string'&&obj[k].startsWith('{{')){
+          const pk=obj[k].replace(/\{\{|\}\}/g,'');
+          if(vals[pk]!==undefined)obj[k]=vals[pk];
+        }else if(typeof obj[k]==='object'&&obj[k]!==null){
+          if(Array.isArray(obj[k]))obj[k].forEach(item=>{if(typeof item==='object')fill(item)});
+          else fill(obj[k]);
+        }
+      }
+    }
+    fill(body);
+    if(vals.model&&body.model)body.model=vals.model;
+  }else if(cp.method!=='GET'){
+    const bkeys=(cp.params||[]).filter(p=>!endpoint.includes(`{{${p.key}}}`)).map(p=>p.key);
+    if(bkeys.length){body={};bkeys.forEach(k=>{if(vals[k])body[k]=vals[k]})}
+  }
+
+  try{
+    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:connId,method:cp.method,endpoint,pathParams,queryParams,body})}).then(r=>r.json());
+    btn.disabled=false;btn.textContent='Run';
+    const res=$('#capResult');
+    res.innerHTML=`
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <span class="sts s${String(r.status)[0]}">${r.status}</span>
+        <span style="font-size:10px;color:var(--t3)">${r.elapsed}ms</span>
+      </div>
+      <div class="code">${typeof r.responseBody==='object'?hl(JSON.stringify(r.responseBody,null,2)):esc(String(r.responseBody||''))}</div>
+    `;
+    lHist();lConns();
+  }catch(err){btn.disabled=false;btn.textContent='Run';$('#capResult').innerHTML=`<div style="color:var(--r);font-size:12px">${esc(err.message)}</div>`}
+  return false;
+}
+
+async function delConn(id){if(!confirm('Remove this API?'))return;await fetch('/api/connections/'+id,{method:'DELETE'});await lConns();renderCatalog()}
+
+// ── ACTIVITY ─────────────────────────────────────────────────────────
+function renderAct(){
+  const connNames=['all',...new Set(hist.map(h=>h.connectionName).filter(Boolean))];
+  $('#actChips').innerHTML=connNames.map(n=>`<div class="chip${n===activeHistFilter?' on':''}" onclick="setHistFilter('${n}')">${n==='all'?'All':n}</div>`).join('');
+  const list=activeHistFilter==='all'?hist:hist.filter(h=>h.connectionName===activeHistFilter);
+  const c=$('#actList');
+  if(!list.length){c.innerHTML='';$('#actE').style.display='block';return}
+  $('#actE').style.display='none';
+  c.innerHTML=list.map(h=>`<div class="hi" onclick="showDet('${h.id}')">
+    <div class="dot" style="background:${h.connectionColor||'var(--ac)'}"></div>
+    <span class="mtd ${h.method}" style="padding:1px 4px;font-size:8px">${h.method}</span>
     <span class="ep">${esc(h.endpoint||h.url)}</span>
     <span class="sts s${String(h.status)[0]}">${h.status}</span>
     <span class="ms">${h.elapsed}ms</span>
   </div>`).join('');
 }
-function rSv(){
-  const c=$('#svList');
-  if(!svd.length){c.innerHTML='';$('#svE').style.display='block';return}
-  $('#svE').style.display='none';
-  c.innerHTML=svd.map(s=>`<div class="card" style="display:flex;align-items:center;gap:7px;padding:9px 10px;cursor:pointer" onclick="loadSv('${s.id}')">
-    <span class="mtd ${s.method||'GET'}">${s.method||'GET'}</span>
-    <span style="flex:1;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(s.name||s.endpoint)}</span>
-    <button class="btn btn-g btn-s" style="width:auto;padding:3px 7px" onclick="event.stopPropagation();delSv('${s.id}')">×</button>
-  </div>`).join('');
-}
+function setHistFilter(f){activeHistFilter=f;renderAct()}
 
-function selC(id){$('#rC').value=id;nav('req')}
-function openSheet(){$('#addSh').classList.add('on')}
-function closeSheet(){$('#addSh').classList.remove('on')}
-$('#aA').addEventListener('change',()=>{$('#aVW').style.display=$('#aA').value==='none'?'none':'block'});
-
-async function addConn(){
-  const n=$('#aN').value.trim(),u=$('#aU').value.trim();if(!n||!u)return;
-  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,baseUrl:u,authType:$('#aA').value,authValue:$('#aV').value,description:$('#aD').value})});
-  $('#aN').value='';$('#aU').value='';$('#aV').value='';$('#aD').value='';closeSheet();lC();
-}
-
-async function sendReq(){
-  const id=$('#rC').value;if(!id)return;
-  const btn=$('#sendBtn');btn.disabled=true;btn.textContent='Sending...';$('#resW').style.display='none';
-  const qp={};$('#rQ').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split('=');if(k.trim())qp[k.trim()]=v.join('=').trim()});
-  const ch={};$('#rH').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split(':');if(k.trim())ch[k.trim()]=v.join(':').trim()});
-  let body=null;const bv=$('#rB').value.trim();if(bv){try{body=JSON.parse(bv)}catch{body=bv}}
-  try{
-    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:id,method:$('#rM').value,endpoint:$('#rE').value,queryParams:qp,body,customHeaders:ch})}).then(r=>r.json());
-    showRes(r);
-  }catch(e){console.error(e)}
-  btn.disabled=false;btn.textContent='Send request';
-}
-
-function showRes(r){
-  $('#resW').style.display='block';
-  $('#resMtd').textContent=r.method;$('#resMtd').className='mtd '+r.method;
-  $('#resSts').textContent=r.status;$('#resSts').className='sts s'+String(r.status)[0];
-  $('#resUr').textContent=r.endpoint||r.url;$('#resMs').textContent=r.elapsed+'ms';
-  $('#resBody').innerHTML=typeof r.responseBody==='object'?hl(JSON.stringify(r.responseBody,null,2)):esc(String(r.responseBody));
-  $('#resW').scrollIntoView({behavior:'smooth'});
-}
-
-function det(id){
+function showDet(id){
   const h=hist.find(x=>x.id===id);if(!h)return;
   $('#detC').innerHTML=`
     <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px">
@@ -332,25 +451,46 @@ function det(id){
       <span style="flex:1"></span><span style="font-size:10px;color:var(--t3)">${h.elapsed}ms</span>
     </div>
     <div style="font-size:11px;color:var(--t2);margin-bottom:4px;word-break:break-all">${esc(h.url)}</div>
-    <div style="font-size:10px;color:var(--t3);margin-bottom:10px">${h.connectionName} · ${new Date(h.timestamp).toLocaleString()}</div>
+    <div style="font-size:10px;color:var(--t3);margin-bottom:10px">${h.connectionName||''} · ${new Date(h.timestamp).toLocaleString()}</div>
     ${h.requestBody?`<div class="sec">Request body</div><div class="code" style="max-height:20vh;margin-bottom:10px">${typeof h.requestBody==='object'?hl(JSON.stringify(h.requestBody,null,2)):esc(String(h.requestBody))}</div>`:''}
     <div class="sec">Response</div>
     <div class="code">${typeof h.responseBody==='object'?hl(JSON.stringify(h.responseBody,null,2)):esc(String(h.responseBody||''))}</div>`;
   $('#detSh').classList.add('on');
 }
-function closeDet(){$('#detSh').classList.remove('on')}
+function closeDetSh(){$('#detSh').classList.remove('on')}
+async function clearHist(){if(!confirm('Clear history?'))return;await fetch('/api/history',{method:'DELETE'});lHist()}
 
-async function saveReq(){const id=$('#rC').value;if(!id)return;const n=prompt('Name this request:');if(!n)return;await fetch('/api/saved',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,connectionId:id,method:$('#rM').value,endpoint:$('#rE').value,query:$('#rQ').value,body:$('#rB').value,headers:$('#rH').value})});lS()}
-function loadSv(id){const s=svd.find(x=>x.id===id);if(!s)return;$('#rC').value=s.connectionId||'';$('#rM').value=s.method||'GET';$('#rE').value=s.endpoint||'';$('#rQ').value=s.query||'';$('#rB').value=s.body||'';$('#rH').value=s.headers||'';nav('req')}
-async function delSv(id){await fetch('/api/saved/'+id,{method:'DELETE'});lS()}
-async function clearHist(){if(!confirm('Clear history?'))return;await fetch('/api/history',{method:'DELETE'});lH()}
+// ── SETTINGS / KEYS ──────────────────────────────────────────────────
+function renderKeys(){
+  const c=$('#keyList');
+  if(!conns.length){c.innerHTML='<div class="emp">No APIs connected.</div>';return}
+  c.innerHTML=conns.map(cn=>{
+    const masked=cn.authValue?'•'.repeat(Math.min(cn.authValue.length,20)):'No key';
+    return`<div class="card" style="display:flex;align-items:center;gap:8px;padding:10px 12px">
+      <div class="ic" style="background:${cn.color||'#6366f1'}18;color:${cn.color||'#6366f1'};width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700">${cn.icon||cn.name[0]}</div>
+      <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">${esc(cn.name)}</div><div style="font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${masked}</div></div>
+      <button class="btn btn-g btn-s" style="width:auto" onclick="editKey('${cn.id}')">Edit</button>
+      <button class="btn btn-d btn-s" style="width:auto;padding:5px 8px" onclick="delConn('${cn.id}')">×</button>
+    </div>`;
+  }).join('');
+}
+function editKey(id){
+  const cn=conns.find(c=>c.id===id);if(!cn)return;
+  const nv=prompt('Enter new API key for '+cn.name+':',cn.authValue||'');
+  if(nv===null)return;
+  fetch('/api/connections/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({authValue:nv})}).then(()=>lConns());
+}
 
-function hl(j){return j.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"([^"]+)"(?=\s*:)/g,'"<span class="k">$1</span>"').replace(/"([^"]*)"/g,'"<span class="s">$1</span>"').replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>').replace(/\b(true|false)\b/g,'<span class="b">$1</span>').replace(/\bnull\b/g,'<span class="nl">null</span>')}
-function nav(p){$$('.pg').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='hist')lH();if(p==='saved')lS();if(p==='set')lSt()}
+// ── NAV ──────────────────────────────────────────────────────────────
+function nav(p){$$('.pg').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='act')lHist();if(p==='set'){lStatus();renderKeys()}}
 $$('.nav button[data-p]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.p)));
+
+// ── UTILS ────────────────────────────────────────────────────────────
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
 function ta(i){if(!i)return'';const d=Date.now()-new Date(i).getTime();if(d<60000)return'now';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return Math.floor(d/86400000)+'d ago'}
-setInterval(()=>{if(socket.connected)lSt()},10000);
+function hl(j){return j.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"([^"]+)"(?=\s*:)/g,'"<span class="k">$1</span>"').replace(/"([^"]*)"/g,'"<span class="s">$1</span>"').replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>').replace(/\b(true|false)\b/g,'<span class="b">$1</span>').replace(/\bnull\b/g,'<span class="nl">null</span>')}
+
+setInterval(()=>{if(socket.connected)lStatus()},15000);
 </script>
 </body>
 </html>

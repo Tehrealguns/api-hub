@@ -1,5 +1,8 @@
 node_modules/
-data/
+data/connections.json
+data/history.json
+data/settings.json
+data/saved.json
 jobs/
 settings.json
 *.log

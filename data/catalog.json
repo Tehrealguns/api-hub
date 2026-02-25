@@ -1,0 +1,317 @@
+[
+  {
+    "id": "openweather",
+    "name": "OpenWeather",
+    "category": "Weather",
+    "color": "#ef6c00",
+    "icon": "W",
+    "description": "Current weather, forecasts, and historical data for any location",
+    "baseUrl": "https://api.openweathermap.org/data/2.5",
+    "authType": "apikey",
+    "authParam": "appid",
+    "authIn": "query",
+    "keyUrl": "https://home.openweathermap.org/api_keys",
+    "capabilities": [
+      { "id": "current", "name": "Current weather", "description": "Get current conditions for a city", "method": "GET", "endpoint": "/weather", "params": [{ "key": "q", "label": "City", "type": "text", "required": true, "placeholder": "London" }, { "key": "units", "label": "Units", "type": "select", "options": ["metric", "imperial"], "default": "metric" }] },
+      { "id": "forecast", "name": "5-day forecast", "description": "Get 5-day / 3-hour forecast", "method": "GET", "endpoint": "/forecast", "params": [{ "key": "q", "label": "City", "type": "text", "required": true, "placeholder": "London" }, { "key": "units", "label": "Units", "type": "select", "options": ["metric", "imperial"], "default": "metric" }] }
+    ]
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "category": "AI",
+    "color": "#10a37f",
+    "icon": "AI",
+    "description": "GPT models, DALL-E, embeddings, and more",
+    "baseUrl": "https://api.openai.com/v1",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://platform.openai.com/api-keys",
+    "capabilities": [
+      { "id": "chat", "name": "Chat completion", "description": "Send a message to GPT", "method": "POST", "endpoint": "/chat/completions", "bodyTemplate": { "model": "gpt-4o-mini", "messages": [{ "role": "user", "content": "{{prompt}}" }] }, "params": [{ "key": "prompt", "label": "Message", "type": "textarea", "required": true, "placeholder": "Hello, how are you?" }, { "key": "model", "label": "Model", "type": "select", "options": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"], "default": "gpt-4o-mini" }] },
+      { "id": "models", "name": "List models", "description": "Get all available models", "method": "GET", "endpoint": "/models", "params": [] },
+      { "id": "embeddings", "name": "Create embedding", "description": "Turn text into a vector", "method": "POST", "endpoint": "/embeddings", "bodyTemplate": { "model": "text-embedding-3-small", "input": "{{text}}" }, "params": [{ "key": "text", "label": "Text", "type": "textarea", "required": true, "placeholder": "The food was great" }] }
+    ]
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "category": "AI",
+    "color": "#d4a574",
+    "icon": "C",
+    "description": "Claude models for chat, analysis, and coding",
+    "baseUrl": "https://api.anthropic.com/v1",
+    "authType": "custom",
+    "authParam": "x-api-key",
+    "authIn": "header",
+    "extraHeaders": { "anthropic-version": "2023-06-01" },
+    "keyUrl": "https://console.anthropic.com/settings/keys",
+    "capabilities": [
+      { "id": "message", "name": "Send message", "description": "Chat with Claude", "method": "POST", "endpoint": "/messages", "bodyTemplate": { "model": "claude-sonnet-4-20250514", "max_tokens": 1024, "messages": [{ "role": "user", "content": "{{prompt}}" }] }, "params": [{ "key": "prompt", "label": "Message", "type": "textarea", "required": true, "placeholder": "Explain quantum computing" }, { "key": "model", "label": "Model", "type": "select", "options": ["claude-sonnet-4-20250514", "claude-3-5-haiku-20241022"], "default": "claude-sonnet-4-20250514" }] }
+    ]
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "Dev",
+    "color": "#8b5cf6",
+    "icon": "GH",
+    "description": "Repos, issues, PRs, users, and more",
+    "baseUrl": "https://api.github.com",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://github.com/settings/tokens",
+    "capabilities": [
+      { "id": "user", "name": "Get user", "description": "Fetch a GitHub user profile", "method": "GET", "endpoint": "/users/{{username}}", "params": [{ "key": "username", "label": "Username", "type": "text", "required": true, "placeholder": "octocat" }] },
+      { "id": "repos", "name": "List repos", "description": "Get repos for a user", "method": "GET", "endpoint": "/users/{{username}}/repos", "params": [{ "key": "username", "label": "Username", "type": "text", "required": true, "placeholder": "octocat" }, { "key": "sort", "label": "Sort by", "type": "select", "options": ["updated", "created", "pushed", "full_name"], "default": "updated" }] },
+      { "id": "me", "name": "My profile", "description": "Get your authenticated profile", "method": "GET", "endpoint": "/user", "params": [] },
+      { "id": "myrepos", "name": "My repos", "description": "List your repositories", "method": "GET", "endpoint": "/user/repos", "params": [{ "key": "sort", "label": "Sort", "type": "select", "options": ["updated", "created", "pushed"], "default": "updated" }] }
+    ]
+  },
+  {
+    "id": "jsonplaceholder",
+    "name": "JSONPlaceholder",
+    "category": "Data",
+    "color": "#3b82f6",
+    "icon": "JP",
+    "description": "Free fake API for testing and prototyping",
+    "baseUrl": "https://jsonplaceholder.typicode.com",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "posts", "name": "List posts", "description": "Get all posts", "method": "GET", "endpoint": "/posts", "params": [] },
+      { "id": "post", "name": "Get post", "description": "Get a single post by ID", "method": "GET", "endpoint": "/posts/{{id}}", "params": [{ "key": "id", "label": "Post ID", "type": "text", "required": true, "placeholder": "1" }] },
+      { "id": "users", "name": "List users", "description": "Get all users", "method": "GET", "endpoint": "/users", "params": [] },
+      { "id": "comments", "name": "Post comments", "description": "Get comments for a post", "method": "GET", "endpoint": "/posts/{{postId}}/comments", "params": [{ "key": "postId", "label": "Post ID", "type": "text", "required": true, "placeholder": "1" }] },
+      { "id": "create", "name": "Create post", "description": "Create a new post", "method": "POST", "endpoint": "/posts", "bodyTemplate": { "title": "{{title}}", "body": "{{body}}", "userId": 1 }, "params": [{ "key": "title", "label": "Title", "type": "text", "required": true, "placeholder": "My Post" }, { "key": "body", "label": "Body", "type": "textarea", "required": true, "placeholder": "Content here..." }] }
+    ]
+  },
+  {
+    "id": "restcountries",
+    "name": "REST Countries",
+    "category": "Data",
+    "color": "#22c55e",
+    "icon": "RC",
+    "description": "Information about countries -- no key required",
+    "baseUrl": "https://restcountries.com/v3.1",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "all", "name": "All countries", "description": "Get all countries", "method": "GET", "endpoint": "/all", "params": [] },
+      { "id": "name", "name": "Search by name", "description": "Find countries by name", "method": "GET", "endpoint": "/name/{{name}}", "params": [{ "key": "name", "label": "Country name", "type": "text", "required": true, "placeholder": "Australia" }] },
+      { "id": "code", "name": "By country code", "description": "Get country by ISO code", "method": "GET", "endpoint": "/alpha/{{code}}", "params": [{ "key": "code", "label": "Code (ISO 3166)", "type": "text", "required": true, "placeholder": "AU" }] }
+    ]
+  },
+  {
+    "id": "coingecko",
+    "name": "CoinGecko",
+    "category": "Finance",
+    "color": "#8dc63f",
+    "icon": "CG",
+    "description": "Crypto prices, market data, and coin info -- free tier available",
+    "baseUrl": "https://api.coingecko.com/api/v3",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "price", "name": "Get price", "description": "Get current price for coins", "method": "GET", "endpoint": "/simple/price", "params": [{ "key": "ids", "label": "Coin IDs", "type": "text", "required": true, "placeholder": "bitcoin,ethereum" }, { "key": "vs_currencies", "label": "Currency", "type": "text", "required": true, "placeholder": "usd" }] },
+      { "id": "trending", "name": "Trending coins", "description": "Top trending coins in the last 24h", "method": "GET", "endpoint": "/search/trending", "params": [] },
+      { "id": "coin", "name": "Coin details", "description": "Get full details for a coin", "method": "GET", "endpoint": "/coins/{{id}}", "params": [{ "key": "id", "label": "Coin ID", "type": "text", "required": true, "placeholder": "bitcoin" }] }
+    ]
+  },
+  {
+    "id": "exchangerate",
+    "name": "ExchangeRate",
+    "category": "Finance",
+    "color": "#0ea5e9",
+    "icon": "FX",
+    "description": "Currency exchange rates -- free, no key required",
+    "baseUrl": "https://open.er-api.com/v6",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "latest", "name": "Latest rates", "description": "Get latest exchange rates for a currency", "method": "GET", "endpoint": "/latest/{{base}}", "params": [{ "key": "base", "label": "Base currency", "type": "text", "required": true, "placeholder": "USD" }] }
+    ]
+  },
+  {
+    "id": "unsplash",
+    "name": "Unsplash",
+    "category": "Media",
+    "color": "#111",
+    "icon": "U",
+    "description": "High-quality free stock photos",
+    "baseUrl": "https://api.unsplash.com",
+    "authType": "custom",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "authPrefix": "Client-ID ",
+    "keyUrl": "https://unsplash.com/developers",
+    "capabilities": [
+      { "id": "search", "name": "Search photos", "description": "Search for photos by keyword", "method": "GET", "endpoint": "/search/photos", "params": [{ "key": "query", "label": "Search query", "type": "text", "required": true, "placeholder": "mountains" }, { "key": "per_page", "label": "Results", "type": "select", "options": ["10", "20", "30"], "default": "10" }] },
+      { "id": "random", "name": "Random photo", "description": "Get a random photo", "method": "GET", "endpoint": "/photos/random", "params": [{ "key": "query", "label": "Topic (optional)", "type": "text", "required": false, "placeholder": "nature" }] }
+    ]
+  },
+  {
+    "id": "giphy",
+    "name": "Giphy",
+    "category": "Media",
+    "color": "#00ff99",
+    "icon": "G",
+    "description": "GIFs, stickers, and animated content",
+    "baseUrl": "https://api.giphy.com/v1/gifs",
+    "authType": "apikey",
+    "authParam": "api_key",
+    "authIn": "query",
+    "keyUrl": "https://developers.giphy.com/dashboard/",
+    "capabilities": [
+      { "id": "search", "name": "Search GIFs", "description": "Search for GIFs", "method": "GET", "endpoint": "/search", "params": [{ "key": "q", "label": "Search", "type": "text", "required": true, "placeholder": "funny cats" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] },
+      { "id": "trending", "name": "Trending GIFs", "description": "Get trending GIFs", "method": "GET", "endpoint": "/trending", "params": [{ "key": "limit", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] }
+    ]
+  },
+  {
+    "id": "omdb",
+    "name": "OMDb",
+    "category": "Media",
+    "color": "#f5c518",
+    "icon": "M",
+    "description": "Movie and TV show information",
+    "baseUrl": "https://www.omdbapi.com",
+    "authType": "apikey",
+    "authParam": "apikey",
+    "authIn": "query",
+    "keyUrl": "https://www.omdbapi.com/apikey.aspx",
+    "capabilities": [
+      { "id": "search", "name": "Search movies", "description": "Search for movies by title", "method": "GET", "endpoint": "/", "params": [{ "key": "s", "label": "Title", "type": "text", "required": true, "placeholder": "Inception" }] },
+      { "id": "detail", "name": "Movie details", "description": "Get full details for a movie", "method": "GET", "endpoint": "/", "params": [{ "key": "t", "label": "Title", "type": "text", "required": true, "placeholder": "Inception" }, { "key": "plot", "label": "Plot", "type": "select", "options": ["short", "full"], "default": "short" }] }
+    ]
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "category": "Productivity",
+    "color": "#000",
+    "icon": "N",
+    "description": "Read and write Notion pages, databases, and blocks",
+    "baseUrl": "https://api.notion.com/v1",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "extraHeaders": { "Notion-Version": "2022-06-28" },
+    "keyUrl": "https://www.notion.so/my-integrations",
+    "capabilities": [
+      { "id": "search", "name": "Search", "description": "Search pages and databases", "method": "POST", "endpoint": "/search", "bodyTemplate": { "query": "{{query}}" }, "params": [{ "key": "query", "label": "Search term", "type": "text", "required": true, "placeholder": "meeting notes" }] },
+      { "id": "users", "name": "List users", "description": "Get workspace users", "method": "GET", "endpoint": "/users", "params": [] }
+    ]
+  },
+  {
+    "id": "todoist",
+    "name": "Todoist",
+    "category": "Productivity",
+    "color": "#e44332",
+    "icon": "T",
+    "description": "Manage tasks, projects, and labels",
+    "baseUrl": "https://api.todoist.com/rest/v2",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://todoist.com/app/settings/integrations/developer",
+    "capabilities": [
+      { "id": "tasks", "name": "Get tasks", "description": "List all active tasks", "method": "GET", "endpoint": "/tasks", "params": [] },
+      { "id": "projects", "name": "Get projects", "description": "List all projects", "method": "GET", "endpoint": "/projects", "params": [] },
+      { "id": "create", "name": "Create task", "description": "Add a new task", "method": "POST", "endpoint": "/tasks", "bodyTemplate": { "content": "{{content}}", "due_string": "{{due}}" }, "params": [{ "key": "content", "label": "Task name", "type": "text", "required": true, "placeholder": "Buy groceries" }, { "key": "due", "label": "Due date", "type": "text", "required": false, "placeholder": "tomorrow" }] }
+    ]
+  },
+  {
+    "id": "groq",
+    "name": "Groq",
+    "category": "AI",
+    "color": "#f55036",
+    "icon": "GQ",
+    "description": "Ultra-fast LLM inference -- Llama, Mixtral, and more",
+    "baseUrl": "https://api.groq.com/openai/v1",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://console.groq.com/keys",
+    "capabilities": [
+      { "id": "chat", "name": "Chat completion", "description": "Send a message to an LLM", "method": "POST", "endpoint": "/chat/completions", "bodyTemplate": { "model": "llama-3.3-70b-versatile", "messages": [{ "role": "user", "content": "{{prompt}}" }] }, "params": [{ "key": "prompt", "label": "Message", "type": "textarea", "required": true, "placeholder": "Explain recursion" }, { "key": "model", "label": "Model", "type": "select", "options": ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "gemma2-9b-it"], "default": "llama-3.3-70b-versatile" }] },
+      { "id": "models", "name": "List models", "description": "Get available models", "method": "GET", "endpoint": "/models", "params": [] }
+    ]
+  },
+  {
+    "id": "opencage",
+    "name": "OpenCage",
+    "category": "Maps",
+    "color": "#2ecc71",
+    "icon": "OC",
+    "description": "Forward and reverse geocoding",
+    "baseUrl": "https://api.opencagedata.com",
+    "authType": "apikey",
+    "authParam": "key",
+    "authIn": "query",
+    "keyUrl": "https://opencagedata.com/dashboard",
+    "capabilities": [
+      { "id": "geocode", "name": "Geocode address", "description": "Convert address to coordinates", "method": "GET", "endpoint": "/geocode/v1/json", "params": [{ "key": "q", "label": "Address", "type": "text", "required": true, "placeholder": "221B Baker Street, London" }] },
+      { "id": "reverse", "name": "Reverse geocode", "description": "Convert coordinates to address", "method": "GET", "endpoint": "/geocode/v1/json", "params": [{ "key": "q", "label": "Lat,Lng", "type": "text", "required": true, "placeholder": "-33.8688,151.2093" }] }
+    ]
+  },
+  {
+    "id": "opentdb",
+    "name": "Open Trivia DB",
+    "category": "Data",
+    "color": "#9333ea",
+    "icon": "Q",
+    "description": "Free trivia questions -- no key needed",
+    "baseUrl": "https://opentdb.com",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "questions", "name": "Get questions", "description": "Fetch trivia questions", "method": "GET", "endpoint": "/api.php", "params": [{ "key": "amount", "label": "Number", "type": "select", "options": ["5", "10", "20"], "default": "10" }, { "key": "difficulty", "label": "Difficulty", "type": "select", "options": ["easy", "medium", "hard"], "default": "medium" }] }
+    ]
+  },
+  {
+    "id": "reddit",
+    "name": "Reddit",
+    "category": "Social",
+    "color": "#ff4500",
+    "icon": "R",
+    "description": "Browse subreddits, posts, and comments -- no key for read-only",
+    "baseUrl": "https://www.reddit.com",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "",
+    "capabilities": [
+      { "id": "hot", "name": "Hot posts", "description": "Get hot posts from a subreddit", "method": "GET", "endpoint": "/r/{{subreddit}}/hot.json", "params": [{ "key": "subreddit", "label": "Subreddit", "type": "text", "required": true, "placeholder": "programming" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] },
+      { "id": "search", "name": "Search Reddit", "description": "Search posts across Reddit", "method": "GET", "endpoint": "/search.json", "params": [{ "key": "q", "label": "Query", "type": "text", "required": true, "placeholder": "javascript" }, { "key": "sort", "label": "Sort", "type": "select", "options": ["relevance", "hot", "top", "new"], "default": "relevance" }] }
+    ]
+  },
+  {
+    "id": "gitlab",
+    "name": "GitLab",
+    "category": "Dev",
+    "color": "#fc6d26",
+    "icon": "GL",
+    "description": "Projects, issues, merge requests, and CI/CD",
+    "baseUrl": "https://gitlab.com/api/v4",
+    "authType": "custom",
+    "authParam": "PRIVATE-TOKEN",
+    "authIn": "header",
+    "keyUrl": "https://gitlab.com/-/user_settings/personal_access_tokens",
+    "capabilities": [
+      { "id": "projects", "name": "My projects", "description": "List your projects", "method": "GET", "endpoint": "/projects", "params": [{ "key": "owned", "label": "Owned only", "type": "select", "options": ["true", "false"], "default": "true" }] },
+      { "id": "user", "name": "My profile", "description": "Get your GitLab profile", "method": "GET", "endpoint": "/user", "params": [] }
+    ]
+  }
+]
