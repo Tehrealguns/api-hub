@@ -6,227 +6,217 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#09090b">
 <title>API Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#09090b;--c1:#111113;--c2:#19191d;--c3:#222228;
-  --b1:#27272a;--b2:#3f3f46;
+  --bg:#09090b;--c1:#18181b;--c2:#1e1e23;--c3:#27272a;
+  --b:rgba(255,255,255,.06);--b2:rgba(255,255,255,.1);
   --t:#fafafa;--t2:#a1a1aa;--t3:#52525b;
   --ac:#6366f1;--ac2:#818cf8;--ac3:#a5b4fc;
   --g:#22c55e;--y:#eab308;--r:#ef4444;--bl:#3b82f6;
-  --radius:10px;
+  --rad:10px;
 }
-html,body{height:100%;background:var(--bg);color:var(--t);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{padding-bottom:64px;overflow-x:hidden}
+html,body{height:100%;background:var(--bg);color:var(--t);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{padding-bottom:56px;overflow-x:hidden}
 
-/* ── NAV ──────────────────────────────────── */
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--c1);border-top:1px solid var(--b1);display:flex;height:60px;padding-bottom:env(safe-area-inset-bottom)}
-.nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:none;border:none;color:var(--t3);cursor:pointer;font-size:10px;font-weight:500;transition:color .15s}
-.nav button svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--b)}
+.top h1{font-size:17px;font-weight:700;flex:1}
+.pill{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px}
+.pill-off{background:var(--c1);color:var(--t3)}
+.pill-on{background:rgba(34,197,94,.1);color:var(--g)}
+
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--c1);border-top:1px solid var(--b);display:flex;height:56px;padding-bottom:env(safe-area-inset-bottom)}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;color:var(--t3);cursor:pointer;font-size:9px;font-weight:500;transition:color .12s}
+.nav button svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button.on{color:var(--ac2)}
 
-/* ── HEADER ───────────────────────────────── */
-.hdr{padding:16px 16px 12px;display:flex;align-items:center;gap:10px}
-.hdr h1{font-size:18px;font-weight:700;flex:1}
-.hdr .pill{font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--c2);color:var(--t2);border:1px solid var(--b1)}
-.hdr .pill.live{background:rgba(34,197,94,.1);color:var(--g);border-color:rgba(34,197,94,.2)}
+.pg{display:none;padding:12px 14px}
+.pg.on{display:block;animation:fi .12s ease}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* ── PAGES ────────────────────────────────── */
-.page{display:none;padding:0 16px 16px}
-.page.on{display:block;animation:fadeIn .15s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
-/* ── CARD ─────────────────────────────────── */
-.card{background:var(--c1);border:1px solid var(--b1);border-radius:var(--radius);padding:14px;margin-bottom:10px;transition:border-color .15s}
+.card{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;margin-bottom:8px;transition:border-color .12s}
 .card:hover{border-color:var(--b2)}
-.card-sm{padding:10px 12px}
 
-/* ── SECTION TITLE ────────────────────────── */
-.sec{font-size:12px;font-weight:600;color:var(--t2);margin-bottom:8px}
+.sec{font-size:12px;font-weight:500;color:var(--t2);margin-bottom:6px}
 
-/* ── CONNECTION CARD ──────────────────────── */
-.conn{display:flex;align-items:center;gap:10px;cursor:pointer}
-.conn .icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
-.conn .info{flex:1;min-width:0}
-.conn .name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.conn .url{font-size:10px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.conn .meta{font-size:10px;color:var(--t3);margin-top:2px}
-.conn .arrow{color:var(--t3);font-size:18px}
+.g{display:grid;gap:6px}
+.g3{grid-template-columns:repeat(3,1fr)}
 
-/* ── INPUT ────────────────────────────────── */
-.field{margin-bottom:12px}
-.field label{display:block;font-size:12px;font-weight:500;color:var(--t2);margin-bottom:5px}
-.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--b1);border-radius:8px;background:var(--c2);color:var(--t);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
+.stat{text-align:center;padding:10px 6px}
+.stat .v{font-size:20px;font-weight:700;color:var(--t)}
+.stat .l{font-size:9px;color:var(--t3);margin-top:1px}
+
+.conn{display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px}
+.conn .ic{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
+.conn .inf{flex:1;min-width:0}
+.conn .nm{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conn .ur{font-size:10px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.conn .mt{font-size:9px;color:var(--t3);margin-top:2px}
+
+.field{margin-bottom:10px}
+.field label{display:block;font-size:12px;font-weight:500;color:var(--t2);margin-bottom:4px}
+.field input,.field textarea,.field select{width:100%;padding:9px 11px;border:1px solid var(--b);border-radius:8px;background:var(--c2);color:var(--t);font-size:13px;font-family:inherit;outline:none;transition:border-color .12s}
 .field input:focus,.field textarea:focus{border-color:var(--ac)}
-.field textarea{resize:vertical;min-height:60px}
+.field textarea{resize:vertical;min-height:56px}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
-.row{display:flex;gap:8px}
-.row .field{flex:1}
+.row{display:flex;gap:6px}
+.row>.field{flex:1}
 
-.btn{padding:11px 16px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .12s;width:100%}
+.btn{padding:10px 14px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .1s;width:100%}
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--ac);color:#fff}
-.btn-primary:hover{background:var(--ac2)}
-.btn-primary:disabled{opacity:.35}
-.btn-ghost{background:var(--c2);color:var(--t2);border:1px solid var(--b1)}
-.btn-ghost:hover{background:var(--c3);color:var(--t)}
-.btn-danger{background:rgba(239,68,68,.1);color:var(--r);border:1px solid rgba(239,68,68,.2)}
-.btn-sm{padding:7px 12px;font-size:11px}
-.btn-row{display:flex;gap:8px;margin-top:4px}
+.btn-p{background:var(--ac);color:#fff}
+.btn-p:disabled{opacity:.3}
+.btn-g{background:var(--c2);color:var(--t2);border:1px solid var(--b)}
+.btn-d{background:rgba(239,68,68,.08);color:var(--r);border:1px solid rgba(239,68,68,.15)}
+.btn-s{padding:6px 10px;font-size:11px}
 
-/* ── METHOD BADGE ─────────────────────────── */
-.method{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700;font-family:'SF Mono',monospace;letter-spacing:.3px}
-.method.GET{background:rgba(34,197,94,.12);color:var(--g)}
-.method.POST{background:rgba(99,102,241,.12);color:var(--ac2)}
-.method.PUT{background:rgba(234,179,8,.12);color:var(--y)}
-.method.DELETE{background:rgba(239,68,68,.12);color:var(--r)}
-.method.PATCH{background:rgba(168,85,247,.12);color:#a855f7}
+.mtd{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700;font-family:'SF Mono','Menlo',monospace;letter-spacing:.3px}
+.mtd.GET{background:rgba(34,197,94,.1);color:var(--g)}
+.mtd.POST{background:rgba(99,102,241,.1);color:var(--ac2)}
+.mtd.PUT{background:rgba(234,179,8,.1);color:var(--y)}
+.mtd.DELETE{background:rgba(239,68,68,.1);color:var(--r)}
+.mtd.PATCH{background:rgba(168,85,247,.1);color:#a855f7}
 
-/* ── STATUS BADGE ─────────────────────────── */
-.status{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;font-family:'SF Mono',monospace}
-.status.s2{background:rgba(34,197,94,.12);color:var(--g)}
-.status.s3{background:rgba(59,130,246,.12);color:var(--bl)}
-.status.s4{background:rgba(234,179,8,.12);color:var(--y)}
-.status.s5{background:rgba(239,68,68,.12);color:var(--r)}
-.status.s0{background:rgba(239,68,68,.12);color:var(--r)}
+.sts{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;font-family:'SF Mono',monospace}
+.sts.s2{background:rgba(34,197,94,.1);color:var(--g)}
+.sts.s3{background:rgba(59,130,246,.1);color:var(--bl)}
+.sts.s4{background:rgba(234,179,8,.1);color:var(--y)}
+.sts.s5,.sts.s0{background:rgba(239,68,68,.1);color:var(--r)}
 
-/* ── RESPONSE VIEWER ──────────────────────── */
-.resp-body{background:var(--c2);border:1px solid var(--b1);border-radius:8px;padding:12px;font:11px/1.6 'SF Mono','Fira Code','Courier New',monospace;color:var(--t2);max-height:50vh;overflow:auto;white-space:pre-wrap;word-break:break-word;tab-size:2}
-.resp-body .k{color:var(--ac3)}
-.resp-body .s{color:var(--g)}
-.resp-body .n{color:var(--y)}
-.resp-body .b{color:var(--r)}
-.resp-body .null{color:var(--t3)}
+.code{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:10px;font:11px/1.6 'SF Mono','Menlo','Courier New',monospace;color:var(--t2);max-height:50vh;overflow:auto;white-space:pre-wrap;word-break:break-word;tab-size:2}
+.code .k{color:var(--ac3)}.code .s{color:var(--g)}.code .n{color:var(--y)}.code .b{color:var(--r)}.code .nl{color:var(--t3)}
 
-/* ── HISTORY ITEM ─────────────────────────── */
-.hist{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--b1);cursor:pointer;transition:opacity .15s}
-.hist:last-child{border:none}
-.hist:active{opacity:.6}
-.hist .ep{flex:1;font-size:11px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'SF Mono',monospace}
-.hist .ms{font-size:10px;color:var(--t3);font-family:'SF Mono',monospace}
-.hist .ago{font-size:10px;color:var(--t3)}
+.hi{display:flex;align-items:center;gap:7px;padding:8px 0;border-bottom:1px solid var(--b);cursor:pointer}
+.hi:last-child{border:none}
+.hi:active{opacity:.5}
+.hi .ep{flex:1;font-size:11px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'SF Mono',monospace}
+.hi .ms{font-size:10px;color:var(--t3);font-family:'SF Mono',monospace}
 
-/* ── EMPTY ────────────────────────────────── */
-.empty{text-align:center;padding:32px 16px;color:var(--t3);font-size:13px}
-.empty svg{width:40px;height:40px;stroke:var(--b2);margin-bottom:10px}
-.empty p{margin-top:4px;font-size:11px;color:var(--t3)}
+.ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex;animation:fi .12s}
+.sh{background:var(--c1);border-radius:14px 14px 0 0;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;padding:16px 14px 28px}
+.sh-bar{width:28px;height:3px;border-radius:2px;background:var(--c3);margin:0 auto 14px}
 
-/* ── MODAL/OVERLAY ────────────────────────── */
-.overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center}
-.overlay.on{display:flex;animation:fadeIn .15s}
-.sheet{background:var(--c1);border-radius:16px 16px 0 0;width:100%;max-width:500px;max-height:85vh;overflow-y:auto;padding:20px 16px 32px}
-.sheet-bar{width:32px;height:4px;border-radius:2px;background:var(--b2);margin:0 auto 16px}
+.emp{text-align:center;padding:20px 14px;color:var(--t3);font-size:12px}
+.emp svg{width:32px;height:32px;stroke:var(--c3);margin-bottom:8px}
 
-/* ── SCROLLBAR ────────────────────────────── */
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--b1);border-radius:2px}
+.info-row{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--b)}
+.info-row:last-child{border:none}
+.info-row .ik{flex:1;font-size:12px;font-weight:500;color:var(--t2)}
+.info-row .iv{font-size:11px;color:var(--t3)}
 
-/* ── STATS ROW ────────────────────────────── */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
-.stat{background:var(--c1);border:1px solid var(--b1);border-radius:var(--radius);padding:12px;text-align:center}
-.stat .v{font-size:22px;font-weight:700}
-.stat .l{font-size:10px;color:var(--t3);margin-top:2px}
+.quick-start{padding:14px;background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);margin-bottom:8px}
+.quick-start h3{font-size:13px;font-weight:600;margin-bottom:6px}
+.quick-start .step{display:flex;gap:8px;padding:6px 0;font-size:11px;color:var(--t2);align-items:flex-start}
+.quick-start .num{width:18px;height:18px;border-radius:50%;background:var(--ac);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <h1>API Hub</h1>
-  <span class="pill" id="hStatus">offline</span>
-</div>
+<div class="top"><h1>API Hub</h1><span class="pill pill-off" id="hSt">offline</span></div>
 
-<!-- ═══ HOME ═══ -->
-<div class="page on" id="pg-home">
-  <div class="stats">
-    <div class="stat"><div class="v" id="stConns">0</div><div class="l">APIs</div></div>
-    <div class="stat"><div class="v" id="stReqs">0</div><div class="l">Requests</div></div>
-    <div class="stat"><div class="v" id="stUp">0m</div><div class="l">Uptime</div></div>
+<!-- HOME -->
+<div class="pg on" id="pg-home">
+  <div class="g g3" style="margin-bottom:8px">
+    <div class="card stat"><div class="v" id="sC">0</div><div class="l">APIs</div></div>
+    <div class="card stat"><div class="v" id="sR">0</div><div class="l">Requests</div></div>
+    <div class="card stat"><div class="v" id="sU">--</div><div class="l">Uptime</div></div>
   </div>
   <div class="sec">Your APIs</div>
-  <div id="connList"></div>
-  <div class="empty" id="connEmpty">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-    <div>No APIs connected yet</div>
-    <p>Tap + to add your first API</p>
+  <div id="cList"></div>
+  <div id="cEmpty">
+    <div class="quick-start">
+      <h3>Get started</h3>
+      <div class="step"><span class="num">1</span><span>Tap <strong>+</strong> below to add an API</span></div>
+      <div class="step"><span class="num">2</span><span>Enter a name, base URL, and auth</span></div>
+      <div class="step"><span class="num">3</span><span>Go to <strong>Request</strong> to start making calls</span></div>
+    </div>
+    <button class="btn btn-p" onclick="openSheet()">Add your first API</button>
   </div>
 </div>
 
-<!-- ═══ REQUEST BUILDER ═══ -->
-<div class="page" id="pg-req">
-  <div class="sec">Make a Request</div>
-  <div class="field"><label>API</label><select id="rConn"></select></div>
+<!-- REQUEST -->
+<div class="pg" id="pg-req">
+  <div class="sec">Request builder</div>
+  <div class="field"><label>API</label><select id="rC"></select></div>
   <div class="row">
-    <div class="field" style="flex:0 0 90px"><label>Method</label><select id="rMethod"><option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option></select></div>
-    <div class="field"><label>Endpoint</label><input id="rEndpoint" placeholder="/users"></div>
+    <div class="field" style="flex:0 0 86px"><label>Method</label><select id="rM"><option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option></select></div>
+    <div class="field"><label>Endpoint</label><input id="rE" placeholder="/users"></div>
   </div>
-  <div class="field"><label>Query Params (key=val, one per line)</label><textarea id="rQuery" rows="2" placeholder="page=1&#10;limit=10"></textarea></div>
-  <div class="field" id="rBodyWrap"><label>Body (JSON)</label><textarea id="rBody" rows="3" placeholder='{"key": "value"}'></textarea></div>
-  <div class="field"><label>Extra Headers (key: value, one per line)</label><textarea id="rHeaders" rows="2" placeholder="X-Custom: value"></textarea></div>
-  <div class="btn-row">
-    <button class="btn btn-ghost btn-sm" onclick="saveReq()" style="flex:0 0 auto">Save</button>
-    <button class="btn btn-primary" id="sendBtn" onclick="sendReq()">Send Request</button>
+  <div class="field"><label>Query params (key=val per line)</label><textarea id="rQ" rows="2" placeholder="page=1&#10;limit=10"></textarea></div>
+  <div class="field"><label>Body (JSON)</label><textarea id="rB" rows="3" placeholder='{"key": "value"}'></textarea></div>
+  <div class="field"><label>Extra headers (key: val per line)</label><textarea id="rH" rows="2" placeholder="X-Custom: value"></textarea></div>
+  <div style="display:flex;gap:6px">
+    <button class="btn btn-g btn-s" onclick="saveReq()" style="width:auto">Save</button>
+    <button class="btn btn-p" id="sendBtn" onclick="sendReq()">Send request</button>
   </div>
-
-  <div id="respWrap" style="display:none;margin-top:14px">
-    <div class="card card-sm" style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-      <span class="method" id="resMethod">GET</span>
-      <span class="status" id="resStatus">200</span>
-      <span style="flex:1;font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="resUrl"></span>
-      <span style="font-size:10px;color:var(--t3);font-family:'SF Mono',monospace" id="resTime">0ms</span>
+  <div id="resW" style="display:none;margin-top:12px">
+    <div class="card" style="display:flex;align-items:center;gap:7px;padding:8px 10px;margin-bottom:6px">
+      <span class="mtd" id="resMtd">GET</span>
+      <span class="sts" id="resSts">200</span>
+      <span style="flex:1;font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="resUr"></span>
+      <span style="font-size:10px;color:var(--t3);font-family:'SF Mono',monospace" id="resMs">0ms</span>
     </div>
-    <div class="resp-body" id="resBody"></div>
+    <div class="code" id="resBody"></div>
   </div>
 </div>
 
-<!-- ═══ HISTORY ═══ -->
-<div class="page" id="pg-hist">
-  <div style="display:flex;align-items:center;margin-bottom:10px">
+<!-- HISTORY -->
+<div class="pg" id="pg-hist">
+  <div style="display:flex;align-items:center;margin-bottom:8px">
     <span class="sec" style="flex:1;margin:0">History</span>
-    <button class="btn btn-ghost btn-sm" style="width:auto" onclick="clearHistory()">Clear</button>
+    <button class="btn btn-g btn-s" style="width:auto" onclick="clearHist()">Clear</button>
   </div>
-  <div id="histList"></div>
-  <div class="empty" id="histEmpty"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div>No requests yet</div></div>
+  <div class="card" style="padding:0"><div id="hList" style="padding:0 10px"></div></div>
+  <div class="emp" id="hE"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div>No requests yet</div></div>
 </div>
 
-<!-- ═══ SAVED ═══ -->
-<div class="page" id="pg-saved">
-  <div class="sec">Saved Requests</div>
-  <div id="savedList"></div>
-  <div class="empty" id="savedEmpty"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg><div>No saved requests</div></div>
+<!-- SAVED -->
+<div class="pg" id="pg-saved">
+  <div class="sec">Saved requests</div>
+  <div id="svList"></div>
+  <div class="emp" id="svE"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg><div>No saved requests yet</div></div>
 </div>
 
-<!-- ═══ SETTINGS ═══ -->
-<div class="page" id="pg-set">
-  <div class="sec">Settings</div>
-  <div class="card card-sm" style="margin-bottom:6px"><div style="display:flex;align-items:center"><span style="flex:1;font-size:12px">Tunnel URL</span><span style="font-size:10px;color:var(--t3);max-width:160px;overflow:hidden;text-overflow:ellipsis" id="sTun">--</span></div></div>
-  <div class="card card-sm" style="margin-bottom:6px"><div style="display:flex;align-items:center"><span style="flex:1;font-size:12px">Local IP</span><span style="font-size:10px;color:var(--t3)" id="sIP">--</span></div></div>
-  <div class="card card-sm" style="margin-bottom:6px"><div style="display:flex;align-items:center"><span style="flex:1;font-size:12px">Memory</span><span style="font-size:10px;color:var(--t3)" id="sMem">--</span></div></div>
-  <div class="card card-sm"><div style="display:flex;align-items:center"><span style="flex:1;font-size:12px">Host</span><span style="font-size:10px;color:var(--t3)" id="sHost">--</span></div></div>
-</div>
-
-<!-- ADD CONNECTION SHEET -->
-<div class="overlay" id="addSheet" onclick="if(event.target===this)closeSheet()">
-  <div class="sheet">
-    <div class="sheet-bar"></div>
-    <h3 style="font-size:16px;font-weight:700;margin-bottom:14px">Add API Connection</h3>
-    <div class="field"><label>Name</label><input id="aName" placeholder="My API"></div>
-    <div class="field"><label>Base URL</label><input id="aUrl" placeholder="https://api.example.com"></div>
-    <div class="row">
-      <div class="field"><label>Auth Type</label><select id="aAuth"><option value="none">None</option><option value="bearer">Bearer Token</option><option value="apikey">API Key</option><option value="basic">Basic Auth</option></select></div>
-    </div>
-    <div class="field" id="aValWrap" style="display:none"><label>Auth Value</label><input id="aVal" placeholder="token or user:pass"></div>
-    <div class="field"><label>Description (optional)</label><input id="aDesc" placeholder="What does this API do?"></div>
-    <button class="btn btn-primary" onclick="addConn()">Add Connection</button>
+<!-- SETTINGS -->
+<div class="pg" id="pg-set">
+  <div class="sec">Connection</div>
+  <div class="card" style="padding:0">
+    <div class="info-row"><span class="ik">Status</span><span class="iv" id="si_st">--</span></div>
+    <div class="info-row"><span class="ik">Host</span><span class="iv" id="si_host">--</span></div>
+    <div class="info-row"><span class="ik">Memory</span><span class="iv" id="si_mem">--</span></div>
+    <div class="info-row"><span class="ik">Uptime</span><span class="iv" id="si_up">--</span></div>
+    <div class="info-row"><span class="ik">Local IP</span><span class="iv" id="si_ip">--</span></div>
+    <div class="info-row"><span class="ik">Clients</span><span class="iv" id="si_cl">--</span></div>
+  </div>
+  <div class="sec" style="margin-top:12px">Data</div>
+  <div class="card" style="padding:0">
+    <div class="info-row"><span class="ik">Total APIs</span><span class="iv" id="si_apis">0</span></div>
+    <div class="info-row"><span class="ik">Total requests</span><span class="iv" id="si_reqs">0</span></div>
+    <div class="info-row"><span class="ik">Clear history</span><button class="btn btn-d btn-s" style="width:auto" onclick="clearHist()">Clear</button></div>
   </div>
 </div>
 
-<!-- VIEW HISTORY DETAIL SHEET -->
-<div class="overlay" id="detailSheet" onclick="if(event.target===this)closeDetail()">
-  <div class="sheet">
-    <div class="sheet-bar"></div>
-    <div id="detailContent"></div>
+<!-- ADD SHEET -->
+<div class="ov" id="addSh" onclick="if(event.target===this)closeSheet()">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:12px">Add API</div>
+    <div class="field"><label>Name</label><input id="aN" placeholder="My API"></div>
+    <div class="field"><label>Base URL</label><input id="aU" placeholder="https://api.example.com"></div>
+    <div class="row"><div class="field"><label>Auth type</label><select id="aA"><option value="none">None</option><option value="bearer">Bearer token</option><option value="apikey">API key</option><option value="basic">Basic auth</option></select></div></div>
+    <div class="field" id="aVW" style="display:none"><label>Auth value</label><input id="aV" placeholder="token or user:pass"></div>
+    <div class="field"><label>Description</label><input id="aD" placeholder="Optional"></div>
+    <button class="btn btn-p" onclick="addConn()">Add connection</button>
   </div>
+</div>
+
+<!-- DETAIL SHEET -->
+<div class="ov" id="detSh" onclick="if(event.target===this)closeDet()">
+  <div class="sh"><div class="sh-bar"></div><div id="detC"></div></div>
 </div>
 
 <!-- NAV -->
@@ -236,158 +226,131 @@ body{padding-bottom:64px;overflow-x:hidden}
   <button onclick="openSheet()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add</button>
   <button data-p="hist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>History</button>
   <button data-p="saved"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Saved</button>
-  <button data-p="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</button>
+  <button data-p="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</button>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const socket=io();
-let conns=[],hist=[],saved=[];
+let conns=[],hist=[],svd=[];
 
-socket.on('connect',()=>{$('#hStatus').textContent='live';$('#hStatus').className='pill live';refresh()});
-socket.on('disconnect',()=>{$('#hStatus').textContent='offline';$('#hStatus').className='pill'});
-socket.on('tunnel:url',u=>{$('#sTun').textContent=u.replace('https://','')});
-socket.on('connection:added',()=>loadConns());
-socket.on('request:complete',()=>loadHist());
+socket.on('connect',()=>{$('#hSt').textContent='live';$('#hSt').className='pill pill-on';load()});
+socket.on('disconnect',()=>{$('#hSt').textContent='offline';$('#hSt').className='pill pill-off'});
+socket.on('connection:added',()=>lC());
+socket.on('request:complete',()=>lH());
 
-async function refresh(){await Promise.all([loadConns(),loadHist(),loadSaved(),loadStatus()])}
-async function loadConns(){conns=await fetch('/api/connections').then(r=>r.json());renderConns();renderConnSelect()}
-async function loadHist(){hist=await fetch('/api/history?limit=60').then(r=>r.json());renderHist()}
-async function loadSaved(){saved=await fetch('/api/saved').then(r=>r.json());renderSaved()}
-async function loadStatus(){const s=await fetch('/api/status').then(r=>r.json());$('#stConns').textContent=s.connectionCount;$('#stReqs').textContent=s.totalRequests;$('#stUp').textContent=s.uptime;$('#sTun').textContent=s.tunnelUrl?s.tunnelUrl.replace('https://',''):'--';$('#sIP').textContent=s.localIP+':4800';$('#sMem').textContent=s.memPct+'%';$('#sHost').textContent=s.hostname}
+async function load(){await Promise.all([lC(),lH(),lS(),lSt()])}
+async function lC(){conns=await fetch('/api/connections').then(r=>r.json());rC();rCS()}
+async function lH(){hist=await fetch('/api/history?limit=60').then(r=>r.json());rH()}
+async function lS(){svd=await fetch('/api/saved').then(r=>r.json());rSv()}
+async function lSt(){
+  const s=await fetch('/api/status').then(r=>r.json());
+  $('#sC').textContent=s.connectionCount;$('#sR').textContent=s.totalRequests;$('#sU').textContent=s.uptime||'--';
+  $('#si_st').textContent=socket.connected?'Connected':'Disconnected';
+  $('#si_host').textContent=s.hostname||'--';$('#si_mem').textContent=(s.memPct||0)+'%';
+  $('#si_up').textContent=s.uptime||'--';$('#si_ip').textContent=(s.localIP||'--')+':4800';
+  $('#si_cl').textContent=s.clients||0;$('#si_apis').textContent=s.connectionCount;$('#si_reqs').textContent=s.totalRequests;
+}
 
-const COLORS=['#6366f1','#3b82f6','#22c55e','#eab308','#ef4444','#ec4899','#8b5cf6','#14b8a6','#f97316','#06b6d4'];
-function connColor(i){return COLORS[i%COLORS.length]}
+const CL=['#6366f1','#3b82f6','#22c55e','#eab308','#ef4444','#ec4899','#8b5cf6','#14b8a6','#f97316','#06b6d4'];
 
-function renderConns(){
-  const c=$('#connList');
-  if(!conns.length){c.innerHTML='';$('#connEmpty').style.display='block';return}
-  $('#connEmpty').style.display='none';
-  c.innerHTML=conns.map((cn,i)=>`<div class="card card-sm conn" onclick="selectConn('${cn.id}')">
-    <div class="icon" style="background:${connColor(i)}22;color:${connColor(i)}">${cn.name[0].toUpperCase()}</div>
-    <div class="info"><div class="name">${esc(cn.name)}</div><div class="url">${esc(cn.baseUrl)}</div>
-    <div class="meta">${cn.requestCount||0} requests${cn.lastUsed?' · last '+ta(cn.lastUsed):''}</div></div>
-    <span class="arrow">›</span>
+function rC(){
+  const c=$('#cList');
+  if(!conns.length){c.innerHTML='';$('#cEmpty').style.display='block';return}
+  $('#cEmpty').style.display='none';
+  c.innerHTML=conns.map((cn,i)=>`<div class="card conn" onclick="selC('${cn.id}')">
+    <div class="ic" style="background:${CL[i%CL.length]}15;color:${CL[i%CL.length]}">${cn.name[0].toUpperCase()}</div>
+    <div class="inf"><div class="nm">${esc(cn.name)}</div><div class="ur">${esc(cn.baseUrl)}</div>
+    <div class="mt">${cn.requestCount||0} requests${cn.lastUsed?' · '+ta(cn.lastUsed):''}</div></div>
+    <span style="color:var(--t3);font-size:16px">›</span>
   </div>`).join('');
 }
+function rCS(){$('#rC').innerHTML=conns.length?conns.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join(''):'<option value="">Add an API first</option>'}
 
-function renderConnSelect(){
-  const sel=$('#rConn');
-  sel.innerHTML=conns.length?conns.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join(''):'<option value="">No APIs added</option>';
-}
-
-function renderHist(){
-  const c=$('#histList');
-  if(!hist.length){c.innerHTML='';$('#histEmpty').style.display='block';return}
-  $('#histEmpty').style.display='none';
-  c.innerHTML=hist.map(h=>`<div class="hist" onclick="showDetail('${h.id}')">
-    <span class="method ${h.method}">${h.method}</span>
+function rH(){
+  const c=$('#hList');
+  if(!hist.length){c.innerHTML='';$('#hE').style.display='block';return}
+  $('#hE').style.display='none';
+  c.innerHTML=hist.map(h=>`<div class="hi" onclick="det('${h.id}')">
+    <span class="mtd ${h.method}">${h.method}</span>
     <span class="ep">${esc(h.endpoint||h.url)}</span>
-    <span class="status s${String(h.status)[0]}">${h.status}</span>
+    <span class="sts s${String(h.status)[0]}">${h.status}</span>
     <span class="ms">${h.elapsed}ms</span>
   </div>`).join('');
 }
-
-function renderSaved(){
-  const c=$('#savedList');
-  if(!saved.length){c.innerHTML='';$('#savedEmpty').style.display='block';return}
-  $('#savedEmpty').style.display='none';
-  c.innerHTML=saved.map(s=>`<div class="card card-sm" style="display:flex;align-items:center;gap:8px;cursor:pointer" onclick="loadSavedReq('${s.id}')">
-    <span class="method ${s.method||'GET'}">${s.method||'GET'}</span>
+function rSv(){
+  const c=$('#svList');
+  if(!svd.length){c.innerHTML='';$('#svE').style.display='block';return}
+  $('#svE').style.display='none';
+  c.innerHTML=svd.map(s=>`<div class="card" style="display:flex;align-items:center;gap:7px;padding:9px 10px;cursor:pointer" onclick="loadSv('${s.id}')">
+    <span class="mtd ${s.method||'GET'}">${s.method||'GET'}</span>
     <span style="flex:1;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(s.name||s.endpoint)}</span>
-    <button class="btn btn-ghost btn-sm" style="width:auto;padding:4px 8px" onclick="event.stopPropagation();delSaved('${s.id}')">×</button>
+    <button class="btn btn-g btn-s" style="width:auto;padding:3px 7px" onclick="event.stopPropagation();delSv('${s.id}')">×</button>
   </div>`).join('');
 }
 
-function selectConn(id){$('#rConn').value=id;nav('req')}
-function openSheet(){$('#addSheet').classList.add('on')}
-function closeSheet(){$('#addSheet').classList.remove('on')}
-$('#aAuth').addEventListener('change',()=>{$('#aValWrap').style.display=$('#aAuth').value==='none'?'none':'block'});
+function selC(id){$('#rC').value=id;nav('req')}
+function openSheet(){$('#addSh').classList.add('on')}
+function closeSheet(){$('#addSh').classList.remove('on')}
+$('#aA').addEventListener('change',()=>{$('#aVW').style.display=$('#aA').value==='none'?'none':'block'});
 
 async function addConn(){
-  const name=$('#aName').value.trim(),baseUrl=$('#aUrl').value.trim();
-  if(!name||!baseUrl)return;
-  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,baseUrl,authType:$('#aAuth').value,authValue:$('#aVal').value,description:$('#aDesc').value})});
-  $('#aName').value='';$('#aUrl').value='';$('#aVal').value='';$('#aDesc').value='';
-  closeSheet();loadConns();
+  const n=$('#aN').value.trim(),u=$('#aU').value.trim();if(!n||!u)return;
+  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,baseUrl:u,authType:$('#aA').value,authValue:$('#aV').value,description:$('#aD').value})});
+  $('#aN').value='';$('#aU').value='';$('#aV').value='';$('#aD').value='';closeSheet();lC();
 }
 
 async function sendReq(){
-  const connId=$('#rConn').value;if(!connId)return;
-  const btn=$('#sendBtn');btn.disabled=true;btn.textContent='Sending...';$('#respWrap').style.display='none';
-
-  const qp={};$('#rQuery').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split('=');if(k.trim())qp[k.trim()]=v.join('=').trim()});
-  const ch={};$('#rHeaders').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split(':');if(k.trim())ch[k.trim()]=v.join(':').trim()});
-  let body=null;const bv=$('#rBody').value.trim();if(bv){try{body=JSON.parse(bv)}catch{body=bv}}
-
+  const id=$('#rC').value;if(!id)return;
+  const btn=$('#sendBtn');btn.disabled=true;btn.textContent='Sending...';$('#resW').style.display='none';
+  const qp={};$('#rQ').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split('=');if(k.trim())qp[k.trim()]=v.join('=').trim()});
+  const ch={};$('#rH').value.trim().split('\n').forEach(l=>{const[k,...v]=l.split(':');if(k.trim())ch[k.trim()]=v.join(':').trim()});
+  let body=null;const bv=$('#rB').value.trim();if(bv){try{body=JSON.parse(bv)}catch{body=bv}}
   try{
-    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:connId,method:$('#rMethod').value,endpoint:$('#rEndpoint').value,queryParams:qp,body,customHeaders:ch})}).then(r=>r.json());
-    showResponse(r);
+    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:id,method:$('#rM').value,endpoint:$('#rE').value,queryParams:qp,body,customHeaders:ch})}).then(r=>r.json());
+    showRes(r);
   }catch(e){console.error(e)}
-  btn.disabled=false;btn.textContent='Send Request';
+  btn.disabled=false;btn.textContent='Send request';
 }
 
-function showResponse(r){
-  $('#respWrap').style.display='block';
-  $('#resMethod').textContent=r.method;$('#resMethod').className='method '+r.method;
-  $('#resStatus').textContent=r.status;$('#resStatus').className='status s'+String(r.status)[0];
-  $('#resUrl').textContent=r.endpoint||r.url;
-  $('#resTime').textContent=r.elapsed+'ms';
-  $('#resBody').innerHTML=typeof r.responseBody==='object'?syntaxHL(JSON.stringify(r.responseBody,null,2)):esc(String(r.responseBody));
-  $('#respWrap').scrollIntoView({behavior:'smooth'});
+function showRes(r){
+  $('#resW').style.display='block';
+  $('#resMtd').textContent=r.method;$('#resMtd').className='mtd '+r.method;
+  $('#resSts').textContent=r.status;$('#resSts').className='sts s'+String(r.status)[0];
+  $('#resUr').textContent=r.endpoint||r.url;$('#resMs').textContent=r.elapsed+'ms';
+  $('#resBody').innerHTML=typeof r.responseBody==='object'?hl(JSON.stringify(r.responseBody,null,2)):esc(String(r.responseBody));
+  $('#resW').scrollIntoView({behavior:'smooth'});
 }
 
-function showDetail(id){
+function det(id){
   const h=hist.find(x=>x.id===id);if(!h)return;
-  $('#detailContent').innerHTML=`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-      <span class="method ${h.method}">${h.method}</span>
-      <span class="status s${String(h.status)[0]}">${h.status} ${h.statusText||''}</span>
-      <span style="flex:1"></span>
-      <span style="font-size:11px;color:var(--t3)">${h.elapsed}ms</span>
+  $('#detC').innerHTML=`
+    <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px">
+      <span class="mtd ${h.method}">${h.method}</span>
+      <span class="sts s${String(h.status)[0]}">${h.status} ${h.statusText||''}</span>
+      <span style="flex:1"></span><span style="font-size:10px;color:var(--t3)">${h.elapsed}ms</span>
     </div>
-    <div style="font-size:11px;color:var(--t2);margin-bottom:6px;word-break:break-all">${esc(h.url)}</div>
-    <div style="font-size:10px;color:var(--t3);margin-bottom:12px">${h.connectionName} · ${new Date(h.timestamp).toLocaleString()}</div>
-    ${h.requestBody?`<div class="sec">Request Body</div><div class="resp-body" style="max-height:20vh;margin-bottom:12px">${typeof h.requestBody==='object'?syntaxHL(JSON.stringify(h.requestBody,null,2)):esc(String(h.requestBody))}</div>`:''}
+    <div style="font-size:11px;color:var(--t2);margin-bottom:4px;word-break:break-all">${esc(h.url)}</div>
+    <div style="font-size:10px;color:var(--t3);margin-bottom:10px">${h.connectionName} · ${new Date(h.timestamp).toLocaleString()}</div>
+    ${h.requestBody?`<div class="sec">Request body</div><div class="code" style="max-height:20vh;margin-bottom:10px">${typeof h.requestBody==='object'?hl(JSON.stringify(h.requestBody,null,2)):esc(String(h.requestBody))}</div>`:''}
     <div class="sec">Response</div>
-    <div class="resp-body">${typeof h.responseBody==='object'?syntaxHL(JSON.stringify(h.responseBody,null,2)):esc(String(h.responseBody||''))}</div>
-  `;
-  $('#detailSheet').classList.add('on');
+    <div class="code">${typeof h.responseBody==='object'?hl(JSON.stringify(h.responseBody,null,2)):esc(String(h.responseBody||''))}</div>`;
+  $('#detSh').classList.add('on');
 }
-function closeDetail(){$('#detailSheet').classList.remove('on')}
+function closeDet(){$('#detSh').classList.remove('on')}
 
-async function saveReq(){
-  const connId=$('#rConn').value;if(!connId)return;
-  const name=prompt('Name this request:');if(!name)return;
-  await fetch('/api/saved',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,connectionId:connId,method:$('#rMethod').value,endpoint:$('#rEndpoint').value,query:$('#rQuery').value,body:$('#rBody').value,headers:$('#rHeaders').value})});
-  loadSaved();
-}
-function loadSavedReq(id){
-  const s=saved.find(x=>x.id===id);if(!s)return;
-  $('#rConn').value=s.connectionId||'';$('#rMethod').value=s.method||'GET';$('#rEndpoint').value=s.endpoint||'';
-  $('#rQuery').value=s.query||'';$('#rBody').value=s.body||'';$('#rHeaders').value=s.headers||'';
-  nav('req');
-}
-async function delSaved(id){await fetch('/api/saved/'+id,{method:'DELETE'});loadSaved()}
-async function clearHistory(){if(!confirm('Clear all history?'))return;await fetch('/api/history',{method:'DELETE'});loadHist()}
+async function saveReq(){const id=$('#rC').value;if(!id)return;const n=prompt('Name this request:');if(!n)return;await fetch('/api/saved',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,connectionId:id,method:$('#rM').value,endpoint:$('#rE').value,query:$('#rQ').value,body:$('#rB').value,headers:$('#rH').value})});lS()}
+function loadSv(id){const s=svd.find(x=>x.id===id);if(!s)return;$('#rC').value=s.connectionId||'';$('#rM').value=s.method||'GET';$('#rE').value=s.endpoint||'';$('#rQ').value=s.query||'';$('#rB').value=s.body||'';$('#rH').value=s.headers||'';nav('req')}
+async function delSv(id){await fetch('/api/saved/'+id,{method:'DELETE'});lS()}
+async function clearHist(){if(!confirm('Clear history?'))return;await fetch('/api/history',{method:'DELETE'});lH()}
 
-function syntaxHL(json){
-  return json.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"([^"]+)"(?=\s*:)/g,'"<span class="k">$1</span>"')
-    .replace(/"([^"]*)"/g,'"<span class="s">$1</span>"')
-    .replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>')
-    .replace(/\b(true|false)\b/g,'<span class="b">$1</span>')
-    .replace(/\bnull\b/g,'<span class="null">null</span>');
-}
-
-function nav(p){$$('.page').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='hist')loadHist();if(p==='saved')loadSaved();if(p==='set')loadStatus()}
+function hl(j){return j.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"([^"]+)"(?=\s*:)/g,'"<span class="k">$1</span>"').replace(/"([^"]*)"/g,'"<span class="s">$1</span>"').replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>').replace(/\b(true|false)\b/g,'<span class="b">$1</span>').replace(/\bnull\b/g,'<span class="nl">null</span>')}
+function nav(p){$$('.pg').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='hist')lH();if(p==='saved')lS();if(p==='set')lSt()}
 $$('.nav button[data-p]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.p)));
-
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
 function ta(i){if(!i)return'';const d=Date.now()-new Date(i).getTime();if(d<60000)return'now';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return Math.floor(d/86400000)+'d ago'}
-
-setInterval(()=>{if(socket.connected)loadStatus()},10000);
+setInterval(()=>{if(socket.connected)lSt()},10000);
 </script>
 </body>
 </html>
