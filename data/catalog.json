@@ -313,5 +313,103 @@
       { "id": "projects", "name": "My projects", "description": "List your projects", "method": "GET", "endpoint": "/projects", "params": [{ "key": "owned", "label": "Owned only", "type": "select", "options": ["true", "false"], "default": "true" }] },
       { "id": "user", "name": "My profile", "description": "Get your GitLab profile", "method": "GET", "endpoint": "/user", "params": [] }
     ]
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "category": "Social",
+    "color": "#5865f2",
+    "icon": "DC",
+    "description": "See your servers, channels, messages, and notifications",
+    "baseUrl": "https://discord.com/api/v10",
+    "authType": "custom",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "authPrefix": "Bot ",
+    "keyUrl": "https://discord.com/developers/applications",
+    "capabilities": [
+      { "id": "guilds", "name": "My servers", "description": "List all servers your bot is in", "method": "GET", "endpoint": "/users/@me/guilds", "params": [] },
+      { "id": "me", "name": "My profile", "description": "Get your bot/user profile", "method": "GET", "endpoint": "/users/@me", "params": [] },
+      { "id": "channels", "name": "Server channels", "description": "List channels in a server", "method": "GET", "endpoint": "/guilds/{{guildId}}/channels", "params": [{ "key": "guildId", "label": "Server ID", "type": "text", "required": true, "placeholder": "123456789" }] },
+      { "id": "messages", "name": "Recent messages", "description": "Get recent messages from a channel", "method": "GET", "endpoint": "/channels/{{channelId}}/messages", "params": [{ "key": "channelId", "label": "Channel ID", "type": "text", "required": true, "placeholder": "123456789" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["10", "25", "50"], "default": "10" }] },
+      { "id": "send", "name": "Send message", "description": "Send a message to a channel", "method": "POST", "endpoint": "/channels/{{channelId}}/messages", "bodyTemplate": { "content": "{{message}}" }, "params": [{ "key": "channelId", "label": "Channel ID", "type": "text", "required": true, "placeholder": "123456789" }, { "key": "message", "label": "Message", "type": "textarea", "required": true, "placeholder": "Hello from API Hub!" }] },
+      { "id": "members", "name": "Server members", "description": "List members of a server", "method": "GET", "endpoint": "/guilds/{{guildId}}/members", "params": [{ "key": "guildId", "label": "Server ID", "type": "text", "required": true, "placeholder": "123456789" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["10", "50", "100"], "default": "10" }] }
+    ]
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "category": "Social",
+    "color": "#4a154b",
+    "icon": "SL",
+    "description": "Channels, messages, notifications, and workspace activity",
+    "baseUrl": "https://slack.com/api",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://api.slack.com/apps",
+    "capabilities": [
+      { "id": "channels", "name": "List channels", "description": "Get all channels in workspace", "method": "GET", "endpoint": "/conversations.list", "params": [] },
+      { "id": "messages", "name": "Channel messages", "description": "Read recent messages from a channel", "method": "GET", "endpoint": "/conversations.history", "params": [{ "key": "channel", "label": "Channel ID", "type": "text", "required": true, "placeholder": "C0123456789" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["10", "25", "50"], "default": "10" }] },
+      { "id": "send", "name": "Send message", "description": "Post a message to a channel", "method": "POST", "endpoint": "/chat.postMessage", "bodyTemplate": { "channel": "{{channel}}", "text": "{{text}}" }, "params": [{ "key": "channel", "label": "Channel ID", "type": "text", "required": true, "placeholder": "C0123456789" }, { "key": "text", "label": "Message", "type": "textarea", "required": true, "placeholder": "Hello from API Hub!" }] },
+      { "id": "users", "name": "List users", "description": "Get all workspace members", "method": "GET", "endpoint": "/users.list", "params": [] },
+      { "id": "me", "name": "My profile", "description": "Get your Slack identity", "method": "GET", "endpoint": "/auth.test", "params": [] }
+    ]
+  },
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "category": "Social",
+    "color": "#26a5e4",
+    "icon": "TG",
+    "description": "Send and receive messages, manage bots and chats",
+    "baseUrl": "https://api.telegram.org",
+    "authType": "none",
+    "authParam": "",
+    "authIn": "none",
+    "keyUrl": "https://t.me/BotFather",
+    "note": "Base URL becomes https://api.telegram.org/bot<TOKEN>",
+    "capabilities": [
+      { "id": "me", "name": "Bot info", "description": "Get your bot's profile", "method": "GET", "endpoint": "/getMe", "params": [] },
+      { "id": "updates", "name": "Get updates", "description": "Fetch recent messages and notifications", "method": "GET", "endpoint": "/getUpdates", "params": [{ "key": "limit", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] },
+      { "id": "send", "name": "Send message", "description": "Send a message to a chat", "method": "POST", "endpoint": "/sendMessage", "bodyTemplate": { "chat_id": "{{chatId}}", "text": "{{text}}" }, "params": [{ "key": "chatId", "label": "Chat ID", "type": "text", "required": true, "placeholder": "123456789" }, { "key": "text", "label": "Message", "type": "textarea", "required": true, "placeholder": "Hello!" }] },
+      { "id": "chats", "name": "Chat info", "description": "Get info about a chat", "method": "GET", "endpoint": "/getChat", "params": [{ "key": "chat_id", "label": "Chat ID", "type": "text", "required": true, "placeholder": "123456789" }] }
+    ]
+  },
+  {
+    "id": "twitter",
+    "name": "Twitter / X",
+    "category": "Social",
+    "color": "#1d9bf0",
+    "icon": "X",
+    "description": "Tweets, timeline, users, and notifications",
+    "baseUrl": "https://api.twitter.com/2",
+    "authType": "bearer",
+    "authParam": "Authorization",
+    "authIn": "header",
+    "keyUrl": "https://developer.twitter.com/en/portal/dashboard",
+    "capabilities": [
+      { "id": "me", "name": "My profile", "description": "Get your Twitter profile", "method": "GET", "endpoint": "/users/me", "params": [] },
+      { "id": "user", "name": "Lookup user", "description": "Get a user by username", "method": "GET", "endpoint": "/users/by/username/{{username}}", "params": [{ "key": "username", "label": "Username", "type": "text", "required": true, "placeholder": "elonmusk" }] },
+      { "id": "tweets", "name": "User tweets", "description": "Get recent tweets from a user", "method": "GET", "endpoint": "/users/{{userId}}/tweets", "params": [{ "key": "userId", "label": "User ID", "type": "text", "required": true, "placeholder": "12345" }, { "key": "max_results", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] },
+      { "id": "search", "name": "Search tweets", "description": "Search recent tweets", "method": "GET", "endpoint": "/tweets/search/recent", "params": [{ "key": "query", "label": "Search query", "type": "text", "required": true, "placeholder": "javascript" }, { "key": "max_results", "label": "Limit", "type": "select", "options": ["10", "25", "50"], "default": "10" }] }
+    ]
+  },
+  {
+    "id": "instagram",
+    "name": "Instagram",
+    "category": "Social",
+    "color": "#e4405f",
+    "icon": "IG",
+    "description": "View your media, profile, and insights (business/creator accounts)",
+    "baseUrl": "https://graph.instagram.com",
+    "authType": "apikey",
+    "authParam": "access_token",
+    "authIn": "query",
+    "keyUrl": "https://developers.facebook.com/apps/",
+    "capabilities": [
+      { "id": "me", "name": "My profile", "description": "Get your Instagram profile", "method": "GET", "endpoint": "/me", "params": [{ "key": "fields", "label": "Fields", "type": "text", "required": false, "placeholder": "id,username,account_type,media_count" }] },
+      { "id": "media", "name": "My media", "description": "Get your recent posts", "method": "GET", "endpoint": "/me/media", "params": [{ "key": "fields", "label": "Fields", "type": "text", "required": false, "placeholder": "id,caption,media_type,timestamp,permalink" }, { "key": "limit", "label": "Limit", "type": "select", "options": ["5", "10", "25"], "default": "10" }] }
+    ]
   }
 ]
