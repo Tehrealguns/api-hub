@@ -13,175 +13,153 @@
 html,body{height:100%;background:var(--bg);color:var(--t);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 body{padding-bottom:56px;overflow-x:hidden}
 
-/* top bar */
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--b)}
 .top h1{font-size:16px;font-weight:700;flex:1}
-.top .cnt{font-size:10px;color:var(--t3);margin-right:8px}
 .pill{font-size:9px;font-weight:600;padding:3px 9px;border-radius:20px}
 .pill-off{background:var(--c1);color:var(--t3)}.pill-on{background:rgba(34,197,94,.1);color:var(--g)}
-
-/* bottom nav */
 .nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--c1);border-top:1px solid var(--b);display:flex;height:56px;padding-bottom:env(safe-area-inset-bottom)}
-.nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;color:var(--t3);cursor:pointer;font-size:9px;font-weight:500;transition:color .12s}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;color:var(--t3);cursor:pointer;font-size:8px;font-weight:500}
 .nav button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button.on{color:var(--ac2)}
-
-/* pages */
 .pg{display:none;padding:8px 12px}.pg.on{display:block;animation:fi .1s ease}
 @keyframes fi{from{opacity:0}to{opacity:1}}
-
-/* common */
-.card{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;margin-bottom:6px;transition:border-color .1s}
-.card:hover{border-color:var(--b2)}
-.sec{font-size:11px;font-weight:500;color:var(--t3);margin:10px 0 6px;padding-left:2px}
+.card{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;margin-bottom:6px}
+.sec{font-size:11px;font-weight:500;color:var(--t3);margin:8px 0 5px 2px}
 .field{margin-bottom:8px}
 .field label{display:block;font-size:11px;font-weight:500;color:var(--t2);margin-bottom:3px}
 .field input,.field textarea,.field select{width:100%;padding:9px 10px;border:1px solid var(--b);border-radius:8px;background:var(--c2);color:var(--t);font-size:13px;font-family:inherit;outline:none}
 .field input:focus,.field textarea:focus{border-color:var(--ac)}
-.field textarea{resize:vertical;min-height:50px}
+.field textarea{resize:vertical;min-height:48px}
 .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
 .row{display:flex;gap:6px}.row>.field{flex:1}
-.btn{padding:10px 14px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+.btn{padding:10px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
 .btn:active{transform:scale(.98)}
 .btn-p{background:var(--ac);color:#fff}.btn-p:disabled{opacity:.3}
 .btn-g{background:var(--c2);color:var(--t2);border:1px solid var(--b)}
 .btn-d{background:rgba(239,68,68,.08);color:var(--r);border:1px solid rgba(239,68,68,.15)}
 .btn-s{padding:6px 10px;font-size:11px}
-.mtd{display:inline-block;padding:2px 5px;border-radius:3px;font-size:8px;font-weight:700;font-family:'SF Mono',monospace;letter-spacing:.3px}
-.mtd.GET{background:rgba(34,197,94,.1);color:var(--g)}.mtd.POST{background:rgba(99,102,241,.1);color:var(--ac2)}.mtd.PUT{background:rgba(234,179,8,.1);color:var(--y)}.mtd.DELETE{background:rgba(239,68,68,.1);color:var(--r)}.mtd.PATCH{background:rgba(168,85,247,.1);color:#a855f7}
-.sts{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:600;font-family:'SF Mono',monospace}
-.sts.s2{background:rgba(34,197,94,.1);color:var(--g)}.sts.s4{background:rgba(234,179,8,.1);color:var(--y)}.sts.s5,.sts.s0{background:rgba(239,68,68,.1);color:var(--r)}
-.code{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:10px;font:11px/1.6 'SF Mono','Menlo',monospace;color:var(--t2);max-height:40vh;overflow:auto;white-space:pre-wrap;word-break:break-word}
-.code .k{color:#a5b4fc}.code .s{color:#22c55e}.code .n{color:#eab308}.code .b{color:#ef4444}.code .nl{color:#52525b}
-.ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}
-.ov.on{display:flex;animation:fi .1s}
-.sh{background:var(--c1);border-radius:14px 14px 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:16px 14px 28px}
-.sh-bar{width:28px;height:3px;border-radius:2px;background:var(--c3);margin:0 auto 12px}
-.emp{text-align:center;padding:20px;color:var(--t3);font-size:12px}
-.chips{display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:8px}
-.chips::-webkit-scrollbar{display:none}
+.mtd{display:inline-block;padding:1px 5px;border-radius:3px;font-size:8px;font-weight:700;font-family:'SF Mono',monospace}
+.mtd.GET{background:rgba(34,197,94,.1);color:var(--g)}.mtd.POST{background:rgba(99,102,241,.1);color:var(--ac2)}.mtd.PUT{background:rgba(234,179,8,.1);color:var(--y)}.mtd.DELETE{background:rgba(239,68,68,.1);color:var(--r)}
+.sts{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600;font-family:'SF Mono',monospace}
+.sts.ok{background:rgba(34,197,94,.1);color:var(--g)}.sts.err{background:rgba(239,68,68,.1);color:var(--r)}
+.chips{display:flex;gap:4px;overflow-x:auto;margin-bottom:6px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
 .chip{padding:5px 11px;border-radius:20px;font-size:10px;font-weight:500;white-space:nowrap;cursor:pointer;border:1px solid var(--b);background:var(--c1);color:var(--t2);flex-shrink:0}
 .chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
-
-/* ── COMMAND BAR ─────────────────────────── */
-.cmd{position:relative;margin-bottom:10px}
-.cmd input{width:100%;padding:12px 14px 12px 38px;border:1px solid var(--b);border-radius:12px;background:var(--c1);color:var(--t);font-size:14px;outline:none;font-family:inherit}
+.cmd{position:relative;margin-bottom:8px}
+.cmd input{width:100%;padding:12px 12px 12px 36px;border:1px solid var(--b);border-radius:12px;background:var(--c1);color:var(--t);font-size:14px;outline:none;font-family:inherit}
 .cmd input:focus{border-color:var(--ac)}
-.cmd input::placeholder{color:var(--t3)}
-.cmd svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--t3);fill:none;stroke-width:2}
+.cmd svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--t3);fill:none;stroke-width:2}
+.ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex;animation:fi .1s}
+.sh{background:var(--c1);border-radius:14px 14px 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:14px 12px 24px}
+.sh-bar{width:28px;height:3px;border-radius:2px;background:var(--c3);margin:0 auto 10px}
+.emp{text-align:center;padding:16px;color:var(--t3);font-size:11px}
 
-/* ── QUICK ACTION GRID ───────────────────── */
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
-.qa{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:12px;cursor:pointer;transition:border-color .1s;display:flex;align-items:flex-start;gap:10px}
-.qa:active{border-color:var(--ac)}
-.qa .qi{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.qa .qt{font-size:12px;font-weight:600;margin-bottom:1px}
-.qa .qd{font-size:10px;color:var(--t3);line-height:1.3}
+/* result cards instead of raw json */
+.res-card{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:10px;margin-top:6px}
+.res-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--b);font-size:12px}
+.res-row:last-child{border:none}
+.res-row .rk{color:var(--t2);font-weight:500;flex-shrink:0;margin-right:8px}
+.res-row .rv{color:var(--t);text-align:right;word-break:break-word}
+.res-big{font-size:28px;font-weight:800;text-align:center;padding:12px 0}
+.res-sub{font-size:11px;color:var(--t3);text-align:center;margin-top:-6px;margin-bottom:6px}
+.code{background:var(--c2);border:1px solid var(--b);border-radius:8px;padding:8px;font:10px/1.5 'SF Mono','Menlo',monospace;color:var(--t2);max-height:30vh;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.code .k{color:#a5b4fc}.code .s{color:#22c55e}.code .n{color:#eab308}.code .b{color:#ef4444}.code .nl{color:#52525b}
 
-/* ── ACTION LIST ─────────────────────────── */
-.act{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid var(--b);cursor:pointer;transition:background .1s}
-.act:last-child{border:none}
-.act:active{background:var(--c2)}
-.act .ai{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.act .at{flex:1;min-width:0}
-.act .an{font-size:12px;font-weight:500}
-.act .ad{font-size:10px;color:var(--t3)}
-.act .am{font-size:10px;color:var(--t3)}
+/* quick action */
+.qa{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid var(--b);cursor:pointer}
+.qa:last-child{border:none}
+.qa:active{background:var(--c2)}
+.qa .qi{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+.qa .qt{font-size:12px;font-weight:500;flex:1}
+.qa .qd{font-size:10px;color:var(--t3)}
 
-/* ── FEED ITEM ───────────────────────────── */
-.fi{display:flex;gap:8px;padding:8px 10px;border-bottom:1px solid var(--b);cursor:pointer;align-items:center}
-.fi:last-child{border:none}
-.fi .fd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.fi .fm{flex:1;font-size:11px;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fi .ft{font-size:9px;color:var(--t3);font-family:'SF Mono',monospace;white-space:nowrap}
+/* schedule card */
+.sched{display:flex;align-items:center;gap:8px;padding:10px;border-bottom:1px solid var(--b)}
+.sched:last-child{border:none}
+.sched .si{flex:1;min-width:0}
+.sched .sn{font-size:12px;font-weight:500}
+.sched .sm{font-size:10px;color:var(--t3)}
+.tgl{width:36px;height:20px;border-radius:10px;background:var(--c3);border:none;cursor:pointer;position:relative}
+.tgl.on{background:var(--g)}
+.tgl::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}
+.tgl.on::after{transform:translateX(16px)}
 
-/* ── CATALOG GRID ────────────────────────── */
+/* catalog */
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .cc{background:var(--c1);border:1px solid var(--b);border-radius:var(--rad);padding:10px;cursor:pointer}
 .cc:active{border-color:var(--ac)}
-.cc .ci{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-bottom:6px}
-.cc .cn{font-size:11px;font-weight:600;margin-bottom:2px}
+.cc .ci{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-bottom:5px}
+.cc .cn{font-size:11px;font-weight:600;margin-bottom:1px}
 .cc .cd{font-size:9px;color:var(--t3);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
-/* settings rows */
-.sr{display:flex;align-items:center;padding:10px 12px;border-bottom:1px solid var(--b)}
+.sr{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--b)}
 .sr:last-child{border:none}
 .sr .sk{flex:1;font-size:12px;font-weight:500;color:var(--t2)}
-.sr .sv{font-size:11px;color:var(--t3);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
+.sr .sv{font-size:11px;color:var(--t3)}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
 </style>
 </head>
 <body>
+<div class="top"><h1>Hub</h1><span class="pill pill-off" id="hSt">offline</span></div>
 
-<div class="top">
-  <h1>Hub</h1>
-  <span class="cnt" id="hCnt"></span>
-  <span class="pill pill-off" id="hSt">offline</span>
-</div>
-
-<!-- ═══ HOME / COMMAND CENTER ═══ -->
+<!-- HOME -->
 <div class="pg on" id="pg-home">
-  <div class="cmd"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="cmdBar" placeholder="What do you want to do?" oninput="filterActions()"></div>
-  <div id="cmdResults" style="display:none"></div>
-  <div id="quickActions"></div>
+  <div class="cmd"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="cmdBar" placeholder="What do you want to do?" oninput="search()"></div>
+  <div id="cmdRes" style="display:none"></div>
+  <div id="qaWrap"></div>
   <div class="sec">Recent</div>
-  <div class="card" style="padding:0"><div id="homeFeed"></div></div>
-  <div class="emp" id="homeE">Connect some APIs to get started</div>
+  <div id="feedWrap"></div>
+  <div class="emp" id="homeE">Tap + to connect an API and start doing things</div>
 </div>
 
-<!-- ═══ ACTIONS ═══ -->
-<div class="pg" id="pg-actions">
-  <div class="chips" id="actionChips"></div>
-  <div id="actionList"></div>
-  <div class="emp" id="actE">No actions available. Connect an API first.</div>
+<!-- ACTIONS -->
+<div class="pg" id="pg-act">
+  <div class="chips" id="actChips"></div>
+  <div id="actList"></div>
+  <div class="emp" id="actE">Connect an API to see actions here</div>
 </div>
 
-<!-- ═══ EXPLORE / ADD ═══ -->
+<!-- SCHEDULES -->
+<div class="pg" id="pg-sched">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="sec" style="flex:1;margin:0">Scheduled jobs</span><button class="btn btn-g btn-s" style="width:auto" onclick="openNewSched()">+ New</button></div>
+  <div id="schedList"></div>
+  <div class="emp" id="schedE">No scheduled jobs. Create one to automate actions.</div>
+</div>
+
+<!-- EXPLORE -->
 <div class="pg" id="pg-explore">
-  <div class="cmd"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="sBar" placeholder="Search APIs..." oninput="filterCatalog()"></div>
+  <div class="cmd"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="sBar" placeholder="Search APIs..." oninput="filterCat()"></div>
   <div class="chips" id="catChips"></div>
   <div class="cgrid" id="catGrid"></div>
-  <div style="margin-top:8px"><button class="btn btn-g" onclick="openCustom()">Add custom API</button></div>
+  <div style="margin-top:8px"><button class="btn btn-g" onclick="openSh('custSh')">Add custom API</button></div>
 </div>
 
-<!-- ═══ SETTINGS ═══ -->
+<!-- SETTINGS -->
 <div class="pg" id="pg-set">
   <div class="sec">Connected APIs</div>
   <div id="connList"></div>
   <div class="emp" id="connE">No APIs connected.</div>
-  <div class="sec" style="margin-top:12px">System</div>
+  <div class="sec">System</div>
   <div class="card" style="padding:0">
-    <div class="sr"><span class="sk">Status</span><span class="sv" id="si_st">--</span></div>
-    <div class="sr"><span class="sk">Host</span><span class="sv" id="si_host">--</span></div>
-    <div class="sr"><span class="sk">Memory</span><span class="sv" id="si_mem">--</span></div>
-    <div class="sr"><span class="sk">Uptime</span><span class="sv" id="si_up">--</span></div>
-    <div class="sr"><span class="sk">Requests</span><span class="sv" id="si_reqs">0</span></div>
+    <div class="sr"><span class="sk">Status</span><span class="sv" id="s_st">--</span></div>
+    <div class="sr"><span class="sk">Uptime</span><span class="sv" id="s_up">--</span></div>
+    <div class="sr"><span class="sk">Requests</span><span class="sv" id="s_rq">0</span></div>
+    <div class="sr"><span class="sk">Schedules</span><span class="sv" id="s_sc">0</span></div>
   </div>
-  <div style="margin-top:12px"><button class="btn btn-d" onclick="clearHist()">Clear all history</button></div>
+  <div style="margin-top:10px"><button class="btn btn-d" onclick="clearHist()">Clear history</button></div>
 </div>
 
-<!-- CATALOG ADD SHEET -->
+<!-- SHEETS -->
 <div class="ov" id="catSh" onclick="if(event.target===this)closeSh('catSh')"><div class="sh"><div class="sh-bar"></div><div id="catShC"></div></div></div>
-<!-- CUSTOM API SHEET -->
-<div class="ov" id="custSh" onclick="if(event.target===this)closeSh('custSh')">
-  <div class="sh"><div class="sh-bar"></div>
-    <div style="font-size:15px;font-weight:700;margin-bottom:12px">Add custom API</div>
-    <div class="field"><label>Name</label><input id="cN" placeholder="My API"></div>
-    <div class="field"><label>Base URL</label><input id="cU" placeholder="https://api.example.com"></div>
-    <div class="row"><div class="field"><label>Auth type</label><select id="cA"><option value="none">None</option><option value="bearer">Bearer token</option><option value="apikey">API key</option><option value="basic">Basic auth</option></select></div></div>
-    <div class="field" id="cVW" style="display:none"><label>Auth value</label><input id="cV" placeholder="your-token-here"></div>
-    <button class="btn btn-p" onclick="addCustom()">Add connection</button>
-  </div>
-</div>
-<!-- ACTION RUNNER SHEET -->
+<div class="ov" id="custSh" onclick="if(event.target===this)closeSh('custSh')"><div class="sh"><div class="sh-bar"></div><div style="font-size:14px;font-weight:700;margin-bottom:10px">Add custom API</div><div class="field"><label>Name</label><input id="cN"></div><div class="field"><label>Base URL</label><input id="cU" placeholder="https://api.example.com"></div><div class="row"><div class="field"><label>Auth</label><select id="cA" onchange="$('#cVW').style.display=this.value==='none'?'none':'block'"><option value="none">None</option><option value="bearer">Bearer</option><option value="apikey">API key</option></select></div></div><div class="field" id="cVW" style="display:none"><label>Key/token</label><input id="cV"></div><button class="btn btn-p" onclick="addCustom()">Connect</button></div></div>
 <div class="ov" id="runSh" onclick="if(event.target===this)closeSh('runSh')"><div class="sh"><div class="sh-bar"></div><div id="runShC"></div></div></div>
-<!-- DETAIL SHEET -->
-<div class="ov" id="detSh" onclick="if(event.target===this)closeSh('detSh')"><div class="sh"><div class="sh-bar"></div><div id="detC"></div></div></div>
+<div class="ov" id="schedSh" onclick="if(event.target===this)closeSh('schedSh')"><div class="sh"><div class="sh-bar"></div><div id="schedShC"></div></div></div>
 
 <div class="nav">
   <button class="on" data-p="home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</button>
-  <button data-p="actions"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Actions</button>
+  <button data-p="act"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Actions</button>
+  <button data-p="sched"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Schedule</button>
   <button data-p="explore"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add</button>
   <button data-p="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</button>
 </div>
@@ -190,279 +168,225 @@ body{padding-bottom:56px;overflow-x:hidden}
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const socket=io();
-let catalog=[],conns=[],hist=[],activeCat='All',actionCat='All';
+let catalog=[],conns=[],hist=[],scheds=[],activeCat='All',actCat='All';
 
 socket.on('connect',()=>{$('#hSt').textContent='live';$('#hSt').className='pill pill-on';load()});
 socket.on('disconnect',()=>{$('#hSt').textContent='off';$('#hSt').className='pill pill-off'});
 socket.on('connection:added',()=>reload());
-socket.on('request:complete',()=>{lHist().then(()=>{renderHome();renderActions()})});
+socket.on('request:complete',()=>{lHist().then(renderHome)});
+socket.on('schedule:ran',()=>lScheds());
 
-async function load(){await Promise.all([lCat(),lConns(),lHist(),lSt()]); renderAll()}
-async function reload(){await Promise.all([lConns(),lHist()]); renderAll()}
+async function load(){await Promise.all([lCat(),lConns(),lHist(),lScheds(),lSt()]);renderAll()}
+async function reload(){await Promise.all([lConns(),lHist()]);renderAll()}
 async function lCat(){catalog=await fetch('/api/catalog').then(r=>r.json())}
 async function lConns(){conns=await fetch('/api/connections').then(r=>r.json())}
 async function lHist(){hist=await fetch('/api/history?limit=100').then(r=>r.json())}
-async function lSt(){
-  const s=await fetch('/api/status').then(r=>r.json());
-  $('#si_st').textContent=socket.connected?'Connected':'Offline';
-  $('#si_host').textContent=s.hostname||'--';$('#si_mem').textContent=(s.memPct||0)+'%';
-  $('#si_up').textContent=s.uptime||'--';$('#si_reqs').textContent=s.totalRequests;
-  $('#hCnt').textContent=conns.length?conns.length+' APIs':'';
-}
-function renderAll(){renderHome();renderActions();renderCatalog();renderConns();lSt()}
+async function lScheds(){scheds=await fetch('/api/schedules').then(r=>r.json());renderScheds()}
+async function lSt(){const s=await fetch('/api/status').then(r=>r.json());$('#s_st').textContent=socket.connected?'Connected':'Offline';$('#s_up').textContent=s.uptime||'--';$('#s_rq').textContent=s.totalRequests;$('#s_sc').textContent=s.activeSchedules||0}
+function renderAll(){renderHome();renderActions();renderCatalog();renderConns();renderScheds();lSt()}
 
-// ── All capabilities across all connections, flattened ────────────────
-function allCaps(){
-  const out=[];
-  conns.forEach(cn=>{
-    (cn.capabilities||[]).forEach(cp=>{
-      out.push({...cp,conn:cn,connId:cn.id,connName:cn.name,connColor:cn.color||'#6366f1',connIcon:cn.icon||cn.name[0]});
-    });
-  });
-  return out;
-}
+function allCaps(){const out=[];conns.forEach(cn=>{(cn.capabilities||[]).forEach(cp=>{out.push({...cp,conn:cn,connId:cn.id,connName:cn.name,connColor:cn.color||'#6366f1',connIcon:cn.icon||cn.name[0]})})});return out}
 
-// ── Categories for actions ───────────────────────────────────────────
-const ACTION_CATS={
-  'Message':['send','message','post','chat'],
-  'AI':['chat','completion','message','embedding'],
-  'Read':['get','list','search','fetch','my','hot','trending','latest','current','forecast','questions'],
-  'Create':['create','add','new'],
-  'Lookup':['user','profile','me','info','detail','coin','geocode','reverse','movie'],
-};
-function capCategory(cp){
-  const id=(cp.id+' '+cp.name).toLowerCase();
-  for(const[cat,kws]of Object.entries(ACTION_CATS)){if(kws.some(k=>id.includes(k)))return cat}
-  return 'Other';
+// ── SMART RESPONSE RENDERER ─────────────────────────────────────────
+function renderResponse(data,connName){
+  if(typeof data==='string')return`<div class="res-card"><div style="font-size:12px;color:var(--t2);white-space:pre-wrap">${esc(data)}</div></div>`;
+  if(!data||typeof data!=='object')return`<div class="res-card"><div style="font-size:12px;color:var(--t3)">Empty response</div></div>`;
+
+  // Weather responses
+  if(data.main&&data.weather){const w=data.weather[0];return`<div class="res-card"><div class="res-big">${Math.round(data.main.temp)}°</div><div class="res-sub">${data.name} · ${w.description}</div><div class="res-row"><span class="rk">Feels like</span><span class="rv">${Math.round(data.main.feels_like)}°</span></div><div class="res-row"><span class="rk">Humidity</span><span class="rv">${data.main.humidity}%</span></div><div class="res-row"><span class="rk">Wind</span><span class="rv">${data.wind?.speed} m/s</span></div></div>`}
+
+  // AI chat responses (OpenAI/Groq format)
+  if(data.choices&&data.choices[0]?.message){const m=data.choices[0].message.content;return`<div class="res-card"><div style="font-size:13px;line-height:1.5;white-space:pre-wrap">${esc(m)}</div><div style="font-size:9px;color:var(--t3);margin-top:6px">${data.model||''} · ${data.usage?.total_tokens||'?'} tokens</div></div>`}
+
+  // Anthropic format
+  if(data.content&&data.content[0]?.text&&data.model){return`<div class="res-card"><div style="font-size:13px;line-height:1.5;white-space:pre-wrap">${esc(data.content[0].text)}</div><div style="font-size:9px;color:var(--t3);margin-top:6px">${data.model} · ${data.usage?.output_tokens||'?'} tokens</div></div>`}
+
+  // Crypto price
+  if(data.bitcoin||data.ethereum){const coins=Object.entries(data);return`<div class="res-card">${coins.map(([k,v])=>{const price=Object.values(v)[0];return`<div class="res-row"><span class="rk">${k}</span><span class="rv" style="font-size:16px;font-weight:700">$${typeof price==='number'?price.toLocaleString():price}</span></div>`}).join('')}</div>`}
+
+  // GitHub user
+  if(data.login&&data.avatar_url){return`<div class="res-card"><div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><img src="${data.avatar_url}" style="width:36px;height:36px;border-radius:8px"><div><div style="font-weight:700">${esc(data.name||data.login)}</div><div style="font-size:10px;color:var(--t3)">@${data.login}</div></div></div><div class="res-row"><span class="rk">Repos</span><span class="rv">${data.public_repos}</span></div><div class="res-row"><span class="rk">Followers</span><span class="rv">${data.followers}</span></div>${data.bio?`<div style="font-size:11px;color:var(--t2);margin-top:4px">${esc(data.bio)}</div>`:''}</div>`}
+
+  // Array of items (repos, posts, users, etc)
+  if(Array.isArray(data)){
+    const items=data.slice(0,10);
+    if(!items.length)return`<div class="res-card"><div class="emp">Empty list</div></div>`;
+    return`<div class="res-card">${items.map(item=>{
+      const title=item.title||item.name||item.full_name||item.content||item.text||item.username||item.login||JSON.stringify(item).substring(0,60);
+      const sub=item.description||item.body||item.url||item.html_url||'';
+      return`<div style="padding:6px 0;border-bottom:1px solid var(--b)"><div style="font-size:12px;font-weight:500">${esc(String(title).substring(0,80))}</div>${sub?`<div style="font-size:10px;color:var(--t3);margin-top:1px">${esc(String(sub).substring(0,100))}</div>`:''}</div>`;
+    }).join('')}</div>`;
+  }
+
+  // Object with .data wrapping (Reddit, etc)
+  if(data.data&&(Array.isArray(data.data)||data.data.children))return renderResponse(data.data.children?data.data.children.map(c=>c.data):data.data,connName);
+  if(data.results)return renderResponse(data.results,connName);
+  if(data.items)return renderResponse(data.items,connName);
+
+  // Generic object: show key-value pairs
+  const entries=Object.entries(data).filter(([k,v])=>typeof v!=='object'||v===null).slice(0,12);
+  if(entries.length){return`<div class="res-card">${entries.map(([k,v])=>`<div class="res-row"><span class="rk">${esc(k)}</span><span class="rv">${esc(String(v))}</span></div>`).join('')}</div>`}
+
+  // Fallback: syntax highlighted JSON
+  return`<div class="code">${hl(JSON.stringify(data,null,2))}</div>`;
 }
 
 // ── HOME ─────────────────────────────────────────────────────────────
 function renderHome(){
-  const caps=allCaps();
-  const cmdR=$('#cmdResults');cmdR.style.display='none';$('#cmdBar').value='';
+  const caps=allCaps();$('#cmdBar').value='';$('#cmdRes').style.display='none';
+  const pri=['send','chat','message','current','trending','tasks','search','hot','price'];
+  let quick=[];for(const p of pri){const m=caps.find(c=>c.id.includes(p)&&!quick.find(q=>q.id===c.id&&q.connId===c.connId));if(m)quick.push(m);if(quick.length>=8)break}
+  if(quick.length<8)quick=[...quick,...caps.filter(c=>!quick.includes(c)).slice(0,8-quick.length)];
 
-  // quick actions: pick the most useful 6 capabilities
-  const priorities=['send','chat','message','current','trending','tasks','search','hot'];
-  let quick=[];
-  for(const p of priorities){
-    const match=caps.find(c=>c.id.includes(p)&&!quick.find(q=>q.id===c.id&&q.connId===c.connId));
-    if(match)quick.push(match);
-    if(quick.length>=6)break;
-  }
-  if(quick.length<6)quick=[...quick,...caps.filter(c=>!quick.includes(c)).slice(0,6-quick.length)];
+  if(quick.length){$('#qaWrap').innerHTML=`<div class="card" style="padding:0">${quick.map(c=>`<div class="qa" onclick="openRun('${c.connId}','${c.id}')"><div class="qi" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div><span class="qt">${esc(c.name)}</span><span class="qd">${esc(c.connName)}</span></div>`).join('')}</div>`}else{$('#qaWrap').innerHTML=''}
 
-  if(quick.length){
-    $('#quickActions').innerHTML='<div class="sec">Quick actions</div><div class="qgrid">'+quick.map(c=>`
-      <div class="qa" onclick="openRun('${c.connId}','${c.id}')">
-        <div class="qi" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div>
-        <div><div class="qt">${esc(c.name)}</div><div class="qd">${esc(c.connName)}</div></div>
-      </div>`).join('')+'</div>';
-  } else {
-    $('#quickActions').innerHTML='';
-  }
-
-  // recent feed
-  const feed=$('#homeFeed');
-  if(hist.length){
-    $('#homeE').style.display='none';
-    feed.innerHTML=hist.slice(0,8).map(h=>`<div class="fi" onclick="showDet('${h.id}')">
-      <div class="fd" style="background:${h.connectionColor||'var(--ac)'}"></div>
-      <span class="fm"><strong>${h.connectionName}</strong> ${esc(h.endpoint||h.url)}</span>
-      <span class="sts s${String(h.status)[0]}">${h.status}</span>
-      <span class="ft">${ta(h.timestamp)}</span>
-    </div>`).join('');
-  }else if(conns.length){
-    $('#homeE').style.display='none';
-    feed.innerHTML='<div class="emp">Run an action to see activity here</div>';
-  }else{
-    $('#homeE').style.display='block';feed.innerHTML='';
-  }
+  if(hist.length){$('#homeE').style.display='none';$('#feedWrap').innerHTML=`<div class="card" style="padding:0">${hist.slice(0,6).map(h=>`<div class="qa" onclick="showDet('${h.id}')"><div class="qi" style="background:${h.connectionColor||'var(--ac)'}15;color:${h.connectionColor||'var(--ac)'}">${(h.connectionName||'?')[0]}</div><span class="qt" style="font-size:11px">${esc(h.connectionName)} · ${esc(h.endpoint||'')}</span><span class="sts ${h.status>=200&&h.status<400?'ok':'err'}">${h.status}</span><span class="qd">${ta(h.timestamp)}</span></div>`).join('')}</div>`}
+  else if(!conns.length){$('#homeE').style.display='block';$('#feedWrap').innerHTML=''}
+  else{$('#homeE').style.display='none';$('#feedWrap').innerHTML='<div class="emp">Run an action to see results here</div>'}
 }
 
-function filterActions(){
-  const q=$('#cmdBar').value.toLowerCase().trim();
-  const res=$('#cmdResults');
-  if(!q){res.style.display='none';return}
+function search(){
+  const q=$('#cmdBar').value.toLowerCase().trim();const r=$('#cmdRes');
+  if(!q){r.style.display='none';return}
   const caps=allCaps().filter(c=>(c.name+' '+c.description+' '+c.connName).toLowerCase().includes(q));
-  if(!caps.length){res.innerHTML='<div class="emp">No matching actions</div>';res.style.display='block';return}
-  res.style.display='block';
-  res.innerHTML='<div class="card" style="padding:0;max-height:50vh;overflow-y:auto">'+caps.slice(0,12).map(c=>`
-    <div class="act" onclick="openRun('${c.connId}','${c.id}')">
-      <div class="ai" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div>
-      <div class="at"><div class="an">${esc(c.name)}</div><div class="ad">${esc(c.connName)} · ${esc(c.description||'')}</div></div>
-      <span class="mtd ${c.method}">${c.method}</span>
-    </div>`).join('')+'</div>';
+  r.style.display='block';
+  r.innerHTML=caps.length?`<div class="card" style="padding:0;max-height:50vh;overflow-y:auto">${caps.slice(0,10).map(c=>`<div class="qa" onclick="openRun('${c.connId}','${c.id}')"><div class="qi" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div><span class="qt">${esc(c.name)}</span><span class="qd">${esc(c.connName)}</span><span class="mtd ${c.method}">${c.method}</span></div>`).join('')}</div>`:'<div class="emp">No matching actions</div>';
 }
 
-// ── ACTIONS PAGE ─────────────────────────────────────────────────────
+// ── ACTIONS ──────────────────────────────────────────────────────────
+const CATS={Message:['send','message','post','chat'],AI:['chat','completion','embedding'],Read:['get','list','search','fetch','my','hot','trending','current','forecast','questions','latest'],Create:['create','add','new'],Lookup:['user','profile','me','info','detail','coin','geocode','movie']};
+function capCat(c){const id=(c.id+' '+c.name).toLowerCase();for(const[cat,kws]of Object.entries(CATS)){if(kws.some(k=>id.includes(k)))return cat}return'Other'}
+
 function renderActions(){
-  const caps=allCaps();
-  if(!caps.length){$('#actionList').innerHTML='';$('#actE').style.display='block';$('#actionChips').innerHTML='';return}
+  const caps=allCaps();if(!caps.length){$('#actList').innerHTML='';$('#actE').style.display='block';$('#actChips').innerHTML='';return}
   $('#actE').style.display='none';
-
-  const grouped={};
-  caps.forEach(c=>{const cat=capCategory(c);if(!grouped[cat])grouped[cat]=[];grouped[cat].push(c)});
+  const grouped={};caps.forEach(c=>{const cat=capCat(c);(grouped[cat]=grouped[cat]||[]).push(c)});
   const cats=['All',...Object.keys(grouped)];
-  $('#actionChips').innerHTML=cats.map(c=>`<div class="chip${c===actionCat?' on':''}" onclick="setActCat('${c}')">${c}</div>`).join('');
-
-  const show=actionCat==='All'?caps:(grouped[actionCat]||[]);
-  $('#actionList').innerHTML='<div class="card" style="padding:0">'+show.map(c=>`
-    <div class="act" onclick="openRun('${c.connId}','${c.id}')">
-      <div class="ai" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div>
-      <div class="at"><div class="an">${esc(c.name)}</div><div class="ad">${esc(c.connName)} · ${esc(c.description||'')}</div></div>
-      <span class="mtd ${c.method}">${c.method}</span>
-    </div>`).join('')+'</div>';
+  $('#actChips').innerHTML=cats.map(c=>`<div class="chip${c===actCat?' on':''}" onclick="actCat='${c}';renderActions()">${c}</div>`).join('');
+  const show=actCat==='All'?caps:(grouped[actCat]||[]);
+  $('#actList').innerHTML=`<div class="card" style="padding:0">${show.map(c=>`<div class="qa" onclick="openRun('${c.connId}','${c.id}')"><div class="qi" style="background:${c.connColor}15;color:${c.connColor}">${c.connIcon}</div><div style="flex:1;min-width:0"><div class="qt">${esc(c.name)}</div><div style="font-size:9px;color:var(--t3)">${esc(c.connName)} · ${esc(c.description||'')}</div></div><span class="mtd ${c.method}">${c.method}</span></div>`).join('')}</div>`;
 }
-function setActCat(c){actionCat=c;renderActions()}
 
-// ── RUN CAPABILITY ───────────────────────────────────────────────────
+// ── RUN ACTION ───────────────────────────────────────────────────────
 function openRun(connId,capId){
   const cn=conns.find(c=>c.id===connId);if(!cn)return;
   const cp=(cn.capabilities||[]).find(c=>c.id===capId);if(!cp)return;
   const params=cp.params||[];
-  $('#runShC').innerHTML=`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <div style="width:32px;height:32px;border-radius:8px;background:${cn.color||'#6366f1'}15;color:${cn.color||'#6366f1'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">${cn.icon||cn.name[0]}</div>
-      <div><div style="font-size:14px;font-weight:700">${esc(cp.name)}</div><div style="font-size:10px;color:var(--t3)">${cn.name} · <span class="mtd ${cp.method}">${cp.method}</span></div></div>
-    </div>
-    ${cp.description?`<div style="font-size:11px;color:var(--t2);margin-bottom:10px">${esc(cp.description)}</div>`:''}
-    <form id="runForm" onsubmit="return execCap(event,'${connId}','${capId}')">
-      ${params.map(p=>`<div class="field"><label>${esc(p.label)}${p.required?' *':''}</label>${
-        p.type==='select'?`<select name="${p.key}">${(p.options||[]).map(o=>`<option${o===p.default?' selected':''}>${o}</option>`).join('')}</select>`
-        :p.type==='textarea'?`<textarea name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}></textarea>`
-        :`<input name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}>`
-      }</div>`).join('')}
-      ${!params.length?'<div style="font-size:11px;color:var(--t3);margin-bottom:8px">No parameters needed -- just run it.</div>':''}
-      <button type="submit" class="btn btn-p" id="runBtn">Run</button>
-    </form>
-    <div id="runRes" style="margin-top:10px"></div>`;
+  $('#runShC').innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:30px;height:30px;border-radius:7px;background:${cn.color||'#6366f1'}15;color:${cn.color||'#6366f1'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">${cn.icon||cn.name[0]}</div><div><div style="font-size:14px;font-weight:700">${esc(cp.name)}</div><div style="font-size:10px;color:var(--t3)">${cn.name}</div></div></div>
+    <form id="runForm" onsubmit="return exec(event,'${connId}','${capId}')">
+    ${params.map(p=>`<div class="field"><label>${esc(p.label)}${p.required?' *':''}</label>${p.type==='select'?`<select name="${p.key}">${(p.options||[]).map(o=>`<option${o===p.default?' selected':''}>${o}</option>`).join('')}</select>`:p.type==='textarea'?`<textarea name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}></textarea>`:`<input name="${p.key}" placeholder="${esc(p.placeholder||'')}"${p.required?' required':''}>`}</div>`).join('')}
+    ${!params.length?'<div style="font-size:10px;color:var(--t3);margin-bottom:6px">No input needed</div>':''}
+    <div style="display:flex;gap:6px"><button type="submit" class="btn btn-p" id="runBtn">Run</button><button type="button" class="btn btn-g btn-s" style="width:auto" onclick="schedThis('${connId}','${capId}')">Schedule</button></div>
+    </form><div id="runRes"></div>`;
   openSh('runSh');
 }
 
-async function execCap(e,connId,capId){
+async function exec(e,connId,capId){
   e.preventDefault();
-  const cn=conns.find(c=>c.id===connId);if(!cn)return false;
-  const cp=(cn.capabilities||[]).find(c=>c.id===capId);if(!cp)return false;
+  const cn=conns.find(c=>c.id===connId);const cp=(cn?.capabilities||[]).find(c=>c.id===capId);if(!cn||!cp)return false;
   const vals=Object.fromEntries(new FormData(e.target).entries());
   const btn=$('#runBtn');btn.disabled=true;btn.textContent='Running...';
 
-  let endpoint=cp.endpoint;const pathParams={},queryParams={};
-  for(const[k,v]of Object.entries(vals)){
-    if(endpoint.includes(`{{${k}}}`)){pathParams[k]=v}
-    else if(cp.method==='GET'){queryParams[k]=v}
-  }
+  let endpoint=cp.endpoint;const pp={},qp={};
+  for(const[k,v]of Object.entries(vals)){if(endpoint.includes(`{{${k}}}`))pp[k]=v;else if(cp.method==='GET')qp[k]=v}
 
   let body=null;
   if(cp.bodyTemplate&&cp.method!=='GET'){
     body=JSON.parse(JSON.stringify(cp.bodyTemplate));
-    (function fill(o){for(const k in o){if(typeof o[k]==='string'&&o[k].startsWith('{{')){const pk=o[k].replace(/\{\{|\}\}/g,'');if(vals[pk]!==undefined)o[k]=vals[pk]}else if(typeof o[k]==='object'&&o[k]!==null){if(Array.isArray(o[k]))o[k].forEach(i=>{if(typeof i==='object')fill(i)});else fill(o[k])}}})(body);
+    (function f(o){for(const k in o){if(typeof o[k]==='string'&&o[k].startsWith('{{')){const pk=o[k].replace(/\{\{|\}\}/g,'');if(vals[pk]!==undefined)o[k]=vals[pk]}else if(typeof o[k]==='object'&&o[k]!==null){if(Array.isArray(o[k]))o[k].forEach(i=>{if(typeof i==='object')f(i)});else f(o[k])}}})(body);
     if(vals.model&&body.model)body.model=vals.model;
   }else if(cp.method!=='GET'){
-    const bkeys=(cp.params||[]).filter(p=>!endpoint.includes(`{{${p.key}}}`)).map(p=>p.key);
-    if(bkeys.length){body={};bkeys.forEach(k=>{if(vals[k])body[k]=vals[k]})}
+    const bk=(cp.params||[]).filter(p=>!endpoint.includes(`{{${p.key}}}`)).map(p=>p.key);
+    if(bk.length){body={};bk.forEach(k=>{if(vals[k])body[k]=vals[k]})}
   }
 
   try{
-    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:connId,method:cp.method,endpoint,pathParams,queryParams,body})}).then(r=>r.json());
+    const r=await fetch('/api/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({connectionId:connId,method:cp.method,endpoint,pathParams:pp,queryParams:qp,body})}).then(r=>r.json());
     btn.disabled=false;btn.textContent='Run';
-    $('#runRes').innerHTML=`<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="sts s${String(r.status)[0]}">${r.status}</span><span style="font-size:10px;color:var(--t3)">${r.elapsed}ms</span></div><div class="code">${typeof r.responseBody==='object'?hl(JSON.stringify(r.responseBody,null,2)):esc(String(r.responseBody||''))}</div>`;
+    $('#runRes').innerHTML=`<div style="display:flex;align-items:center;gap:5px;margin:8px 0 4px"><span class="sts ${r.status>=200&&r.status<400?'ok':'err'}">${r.status}</span><span style="font-size:10px;color:var(--t3)">${r.elapsed}ms</span></div>${renderResponse(r.responseBody,cn.name)}`;
     reload();
-  }catch(err){btn.disabled=false;btn.textContent='Run';$('#runRes').innerHTML=`<div style="color:var(--r);font-size:11px">${esc(err.message)}</div>`}
+  }catch(err){btn.disabled=false;btn.textContent='Run';$('#runRes').innerHTML=`<div style="color:var(--r);font-size:11px;margin-top:6px">${esc(err.message)}</div>`}
   return false;
 }
 
-// ── EXPLORE / CATALOG ────────────────────────────────────────────────
-function renderCatalog(){
-  const cats=['All',...new Set(catalog.map(c=>c.category))];
-  $('#catChips').innerHTML=cats.map(c=>`<div class="chip${c===activeCat?' on':''}" onclick="setCat('${c}')">${c}</div>`).join('');
-  filterCatalog();
+function schedThis(connId,capId){
+  const form=$('#runForm');if(!form)return;
+  const vals=Object.fromEntries(new FormData(form).entries());
+  const cn=conns.find(c=>c.id===connId);const cp=(cn?.capabilities||[]).find(c=>c.id===capId);
+  closeSh('runSh');
+  openNewSched(connId,capId,vals,cp?.name);
 }
-function setCat(c){activeCat=c;renderCatalog()}
-function filterCatalog(){
-  const q=$('#sBar')?.value?.toLowerCase()||'';
-  const connIds=new Set(conns.map(c=>c.catalogId));
-  let list=catalog;
-  if(activeCat!=='All')list=list.filter(c=>c.category===activeCat);
-  if(q)list=list.filter(c=>(c.name+c.description+c.category).toLowerCase().includes(q));
-  $('#catGrid').innerHTML=list.map(c=>{
-    const on=connIds.has(c.id);
-    return`<div class="cc" onclick="openCatSh('${c.id}')"${on?' style="border-color:rgba(34,197,94,.2)"':''}>
-      <div class="ci" style="background:${c.color}15;color:${c.color}">${c.icon||c.name[0]}</div>
-      <div class="cn">${esc(c.name)}${on?' <span style="color:var(--g)">●</span>':''}</div>
-      <div class="cd">${(c.capabilities||[]).length} actions · ${c.category}</div>
-    </div>`}).join('');
+
+// ── SCHEDULES ────────────────────────────────────────────────────────
+function renderScheds(){
+  if(!scheds.length){$('#schedList').innerHTML='';$('#schedE').style.display='block';return}
+  $('#schedE').style.display='none';
+  $('#schedList').innerHTML=`<div class="card" style="padding:0">${scheds.map(s=>{
+    const cn=conns.find(c=>c.id===s.connectionId);
+    return`<div class="sched"><div class="si"><div class="sn">${esc(s.name)}</div><div class="sm">${cn?cn.name:'?'} · every ${s.intervalMin}m · ${s.runCount||0} runs${s.lastRun?' · last '+ta(s.lastRun):''}</div></div><button class="tgl${s.enabled?' on':''}" onclick="toggleSched('${s.id}')"></button><button class="btn btn-d btn-s" style="width:auto;margin-left:4px;padding:4px 8px" onclick="delSched('${s.id}')">×</button></div>`}).join('')}</div>`;
+}
+
+function openNewSched(connId,capId,params,name){
+  const caps=allCaps();
+  $('#schedShC').innerHTML=`<div style="font-size:14px;font-weight:700;margin-bottom:10px">New scheduled job</div>
+    <div class="field"><label>Name</label><input id="scN" value="${esc(name||'')}"></div>
+    <div class="field"><label>Action</label><select id="scCap">${caps.map(c=>`<option value="${c.connId}|${c.id}"${c.connId===connId&&c.id===capId?' selected':''}>${c.connName} → ${c.name}</option>`).join('')}</select></div>
+    <div class="field"><label>Run every (minutes)</label><input id="scInt" type="number" min="1" value="60"></div>
+    <div class="field"><label>Parameters (JSON)</label><textarea id="scParams" rows="2">${params?JSON.stringify(params,null,2):'{}'}</textarea></div>
+    <button class="btn btn-p" onclick="createSched()">Create</button>`;
+  openSh('schedSh');
+}
+
+async function createSched(){
+  const[connId,capId]=($('#scCap').value||'').split('|');
+  let params;try{params=JSON.parse($('#scParams').value||'{}')}catch{params={}}
+  await fetch('/api/schedules',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#scN').value||'Job',connectionId:connId,capabilityId:capId,params,intervalMin:parseInt($('#scInt').value)||60})});
+  closeSh('schedSh');lScheds();
+}
+async function toggleSched(id){const s=scheds.find(x=>x.id===id);if(!s)return;await fetch('/api/schedules/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:!s.enabled})});lScheds()}
+async function delSched(id){if(!confirm('Delete?'))return;await fetch('/api/schedules/'+id,{method:'DELETE'});lScheds()}
+
+// ── CATALOG ──────────────────────────────────────────────────────────
+function renderCatalog(){const cats=['All',...new Set(catalog.map(c=>c.category))];$('#catChips').innerHTML=cats.map(c=>`<div class="chip${c===activeCat?' on':''}" onclick="activeCat='${c}';renderCatalog()">${c}</div>`).join('');filterCat()}
+function filterCat(){
+  const q=$('#sBar')?.value?.toLowerCase()||'';const ids=new Set(conns.map(c=>c.catalogId));
+  let ls=catalog;if(activeCat!=='All')ls=ls.filter(c=>c.category===activeCat);if(q)ls=ls.filter(c=>(c.name+c.description+c.category).toLowerCase().includes(q));
+  $('#catGrid').innerHTML=ls.map(c=>{const on=ids.has(c.id);return`<div class="cc" onclick="openCatSh('${c.id}')"${on?' style="border-color:rgba(34,197,94,.2)"':''}><div class="ci" style="background:${c.color}15;color:${c.color}">${c.icon||c.name[0]}</div><div class="cn">${esc(c.name)}${on?' <span style="color:var(--g)">●</span>':''}</div><div class="cd">${(c.capabilities||[]).length} actions · ${c.category}</div></div>`}).join('');
 }
 
 function openCatSh(id){
-  const c=catalog.find(x=>x.id===id);if(!c)return;
-  const on=conns.find(x=>x.catalogId===id);
-  $('#catShC').innerHTML=`
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="width:36px;height:36px;border-radius:8px;background:${c.color}18;color:${c.color};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">${c.icon||c.name[0]}</div>
-      <div><div style="font-size:15px;font-weight:700">${esc(c.name)}</div><div style="font-size:10px;color:var(--t3)">${c.category} · ${(c.capabilities||[]).length} actions</div></div>
-    </div>
-    <div style="font-size:12px;color:var(--t2);margin-bottom:8px;line-height:1.4">${esc(c.description)}</div>
-    ${c.keyUrl?`<div style="font-size:10px;color:var(--t3);margin-bottom:8px">Get key: <a href="${c.keyUrl}" target="_blank" style="color:var(--ac2)">${c.keyUrl.replace('https://','').split('/')[0]}</a></div>`:''}
-    <div class="sec">What you can do</div>
-    ${(c.capabilities||[]).map(cp=>`<div style="display:flex;align-items:center;gap:6px;padding:5px 0;font-size:11px"><span class="mtd ${cp.method}">${cp.method}</span><span style="font-weight:500">${esc(cp.name)}</span><span style="color:var(--t3);flex:1;text-align:right">${esc(cp.description||'')}</span></div>`).join('')}
-    ${on?`<div style="margin-top:10px;font-size:11px;color:var(--g)">Connected</div><button class="btn btn-g" style="margin-top:6px" onclick="nav('actions');closeSh('catSh')">Go to Actions</button>`
-    :`<div class="field" style="margin-top:12px">${c.authType!=='none'?`<label>${c.authType==='bearer'?'Token / API key':'API key'}</label><input id="catKey" placeholder="Paste your key">`:''}</div>
-    <button class="btn btn-p" onclick="addFromCat('${c.id}')">Connect</button>`}`;
+  const c=catalog.find(x=>x.id===id);if(!c)return;const on=conns.find(x=>x.catalogId===id);
+  $('#catShC').innerHTML=`<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><div style="width:32px;height:32px;border-radius:7px;background:${c.color}18;color:${c.color};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">${c.icon||c.name[0]}</div><div><div style="font-size:15px;font-weight:700">${esc(c.name)}</div><div style="font-size:10px;color:var(--t3)">${c.category} · ${(c.capabilities||[]).length} actions</div></div></div>
+    <div style="font-size:11px;color:var(--t2);margin-bottom:8px">${esc(c.description)}</div>
+    ${c.keyUrl?`<div style="font-size:10px;color:var(--t3);margin-bottom:6px">Get key: <a href="${c.keyUrl}" target="_blank" style="color:var(--ac2)">${c.keyUrl.replace('https://','').split('/')[0]}</a></div>`:''}
+    ${on?`<div style="font-size:11px;color:var(--g);margin-bottom:6px">Connected</div><button class="btn btn-g" onclick="nav('act');closeSh('catSh')">Go to Actions</button>`
+    :`<div class="field" style="margin-top:8px">${c.authType!=='none'?`<label>API key / token</label><input id="catKey" placeholder="Paste your key">`:''}</div><button class="btn btn-p" onclick="addFromCat('${c.id}')">Connect</button>`}`;
   openSh('catSh');
 }
 
-async function addFromCat(id){
-  const k=$('#catKey');
-  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({catalogId:id,authValue:k?k.value.trim():''})});
-  closeSh('catSh');await reload();renderCatalog();nav('home');
-}
+async function addFromCat(id){const k=$('#catKey');await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({catalogId:id,authValue:k?k.value.trim():''})});closeSh('catSh');await reload();renderCatalog();nav('home')}
+async function addCustom(){const n=$('#cN').value.trim(),u=$('#cU').value.trim();if(!n||!u)return;await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,baseUrl:u,authType:$('#cA').value,authValue:$('#cV').value})});$('#cN').value='';$('#cU').value='';$('#cV').value='';closeSh('custSh');await reload()}
 
-function openCustom(){openSh('custSh')}
-$('#cA').addEventListener('change',()=>{$('#cVW').style.display=$('#cA').value==='none'?'none':'block'});
-async function addCustom(){
-  const n=$('#cN').value.trim(),u=$('#cU').value.trim();if(!n||!u)return;
-  await fetch('/api/connections',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,baseUrl:u,authType:$('#cA').value,authValue:$('#cV').value})});
-  $('#cN').value='';$('#cU').value='';$('#cV').value='';closeSh('custSh');await reload();
-}
-
-// ── SETTINGS / CONNECTIONS ───────────────────────────────────────────
+// ── SETTINGS ─────────────────────────────────────────────────────────
 function renderConns(){
-  const c=$('#connList');
-  if(!conns.length){c.innerHTML='';$('#connE').style.display='block';return}
+  if(!conns.length){$('#connList').innerHTML='';$('#connE').style.display='block';return}
   $('#connE').style.display='none';
-  c.innerHTML=conns.map(cn=>`<div class="card" style="display:flex;align-items:center;gap:8px;padding:10px">
-    <div style="width:28px;height:28px;border-radius:6px;background:${cn.color||'#6366f1'}15;color:${cn.color||'#6366f1'};display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700">${cn.icon||cn.name[0]}</div>
-    <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600">${esc(cn.name)}</div><div style="font-size:9px;color:var(--t3)">${(cn.capabilities||[]).length} actions · ${cn.requestCount||0} requests</div></div>
-    <button class="btn btn-g btn-s" style="width:auto" onclick="editKey('${cn.id}')">Key</button>
-    <button class="btn btn-d btn-s" style="width:auto;padding:5px 8px" onclick="delConn('${cn.id}')">×</button>
-  </div>`).join('');
+  $('#connList').innerHTML=conns.map(cn=>`<div class="card" style="display:flex;align-items:center;gap:8px;padding:9px 10px"><div style="width:24px;height:24px;border-radius:5px;background:${cn.color||'#6366f1'}15;color:${cn.color||'#6366f1'};display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">${cn.icon||cn.name[0]}</div><div style="flex:1;font-size:12px;font-weight:500">${esc(cn.name)}</div><span style="font-size:9px;color:var(--t3)">${cn.requestCount||0} reqs</span><button class="btn btn-g btn-s" style="width:auto;padding:4px 8px" onclick="editKey('${cn.id}')">Key</button><button class="btn btn-d btn-s" style="width:auto;padding:4px 8px" onclick="delConn('${cn.id}')">×</button></div>`).join('');
 }
-function editKey(id){const cn=conns.find(c=>c.id===id);if(!cn)return;const v=prompt('API key for '+cn.name+':',cn.authValue||'');if(v===null)return;fetch('/api/connections/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({authValue:v})}).then(()=>reload())}
+function editKey(id){const cn=conns.find(c=>c.id===id);if(!cn)return;const v=prompt('Key for '+cn.name+':',cn.authValue||'');if(v===null)return;fetch('/api/connections/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({authValue:v})}).then(()=>reload())}
 async function delConn(id){if(!confirm('Remove?'))return;await fetch('/api/connections/'+id,{method:'DELETE'});await reload();renderCatalog()}
+async function clearHist(){if(!confirm('Clear?'))return;await fetch('/api/history',{method:'DELETE'});await lHist();renderHome()}
 
-// ── DETAIL SHEET ─────────────────────────────────────────────────────
-function showDet(id){
-  const h=hist.find(x=>x.id===id);if(!h)return;
-  $('#detC').innerHTML=`<div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span class="mtd ${h.method}">${h.method}</span><span class="sts s${String(h.status)[0]}">${h.status} ${h.statusText||''}</span><span style="flex:1"></span><span style="font-size:10px;color:var(--t3)">${h.elapsed}ms</span></div>
-    <div style="font-size:10px;color:var(--t2);margin-bottom:4px;word-break:break-all">${esc(h.url)}</div>
-    <div style="font-size:9px;color:var(--t3);margin-bottom:8px">${h.connectionName||''} · ${new Date(h.timestamp).toLocaleString()}</div>
-    ${h.requestBody?`<div class="sec">Request</div><div class="code" style="max-height:20vh;margin-bottom:8px">${typeof h.requestBody==='object'?hl(JSON.stringify(h.requestBody,null,2)):esc(String(h.requestBody))}</div>`:''}
-    <div class="sec">Response</div><div class="code">${typeof h.responseBody==='object'?hl(JSON.stringify(h.responseBody,null,2)):esc(String(h.responseBody||''))}</div>`;
-  openSh('detSh');
-}
+function showDet(id){const h=hist.find(x=>x.id===id);if(!h)return;$('#runShC').innerHTML=`<div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="mtd ${h.method}">${h.method}</span><span class="sts ${h.status>=200&&h.status<400?'ok':'err'}">${h.status}</span><span style="flex:1"></span><span style="font-size:10px;color:var(--t3)">${h.elapsed}ms</span></div><div style="font-size:10px;color:var(--t2);margin-bottom:4px;word-break:break-all">${esc(h.url)}</div><div style="font-size:9px;color:var(--t3);margin-bottom:8px">${h.connectionName||''} · ${new Date(h.timestamp).toLocaleString()}</div>${h.requestBody?`<div class="sec">Request</div><div class="code" style="max-height:15vh;margin-bottom:6px">${typeof h.requestBody==='object'?hl(JSON.stringify(h.requestBody,null,2)):esc(String(h.requestBody))}</div>`:''}<div class="sec">Response</div>${renderResponse(h.responseBody,h.connectionName)}`;openSh('runSh')}
 
-async function clearHist(){if(!confirm('Clear all history?'))return;await fetch('/api/history',{method:'DELETE'});await lHist();renderHome()}
-
-// ── NAV & SHEETS ─────────────────────────────────────────────────────
-function nav(p){$$('.pg').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='set'){lSt();renderConns()}}
+function nav(p){$$('.pg').forEach(x=>x.classList.remove('on'));$$('.nav button[data-p]').forEach(x=>x.classList.remove('on'));$(`#pg-${p}`).classList.add('on');$(`.nav button[data-p="${p}"]`)?.classList.add('on');if(p==='set'){lSt();renderConns()}if(p==='sched')lScheds()}
 $$('.nav button[data-p]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.p)));
 function openSh(id){$('#'+id).classList.add('on')}
 function closeSh(id){$('#'+id).classList.remove('on')}
-
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
 function ta(i){if(!i)return'';const d=Date.now()-new Date(i).getTime();if(d<60000)return'now';if(d<3600000)return Math.floor(d/60000)+'m';if(d<86400000)return Math.floor(d/3600000)+'h';return Math.floor(d/86400000)+'d'}
 function hl(j){return j.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"([^"]+)"(?=\s*:)/g,'"<span class="k">$1</span>"').replace(/"([^"]*)"/g,'"<span class="s">$1</span>"').replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>').replace(/\b(true|false)\b/g,'<span class="b">$1</span>').replace(/\bnull\b/g,'<span class="nl">null</span>')}
-setInterval(()=>{if(socket.connected)lSt()},15000);
+setInterval(()=>{if(socket.connected){lSt();lScheds()}},15000);
 </script>
 </body>
 </html>

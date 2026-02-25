@@ -3,6 +3,7 @@ data/connections.json
 data/history.json
 data/settings.json
 data/saved.json
+data/schedules.json
 jobs/
 settings.json
 *.log
